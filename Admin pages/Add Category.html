@@ -1,0 +1,159 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <title>Add Category</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+     <!--font - awesome-->
+     <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
+
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+
+    <!--style css-->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg  bg-white white-nav-top fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="../Front Pages/Home Page.html"><img src="../images/logo.png" alt="logo"></a>
+            <button class="navbar-toggler collapsed col-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="mobile-nav-close-btn">&times;</span>
+                <span class="mobile-nav-open-btn">&#9776;</span>
+            </button>
+            <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link titles" href="DashBoardAdimin.html">Dashboard</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                        <a href="Notes Under Review.html" class="dropdown-item">Notes Under Review</a>
+                        <a href="Published Notes.html" class="dropdown-item">Published Notes</a>
+                        <a href="Downloaded Notes.html" class="dropdown-item">Download Notes</a>
+                        <a href="Rejected Notes.html" class="dropdown-item">Rejected Notes</a>
+                        </div>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link titles" href="Members Details.html">Members</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                        <a href="Spam Report.html" class="dropdown-item">Spam Reports</a>
+                        </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                        <a href="Manage System Configuration.html" class="dropdown-item">Manage System Configuration</a>
+                        <a href="Manage Administrator.html" class="dropdown-item">Manage Administrator</a>
+                        <a href="Manage Category.html" class="dropdown-item">Manage Category</a>
+                        <a href="Manage Type.html" class="dropdown-item">Manage Type</a>
+                        <a href="Manage Country.html" class="dropdown-item">Manage Countries</a>
+                        </div>
+                </li>
+                <li class="nav-item dropdown admin-profile">
+                    <a class="nav-link" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/reviewer-1.png"alt="customer-image"></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                    <a href="My Profile.html" class="dropdown-item">Update Profile</a>
+                    <a href="../Front Pages/Change Password.html" class="dropdown-item">Change Password</a>
+                    <a href="../Front Pages/Login.html" class="dropdown-item logout-link">LOGOUT</a>
+                  </div>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link titles" href="../Front Pages/Login.html">Logout</a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <section class="Add-notes">
+        <div class="content-box-md">
+            <div class="container">
+                <div class="row first-component">
+                    <div class="col-md-12">
+                       <div class="heading-01">
+                        <h2>Add Category</h2>
+                       </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <form>
+                                <div class="form-group input-flid">
+                                    <label for="text-1" class="titles">Category Name *</label>
+                                    <input type="text" class="form-control default-text" value="IT">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Description *</label>
+                            <textarea class="form-control" id="" rows="5" placeholder="Enter your description"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="home-add-notes">
+                            <a class="btn btn-general btn-home-03" href="#" target="save" role="button">submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>  
+    </section>
+    
+    <hr>
+     <!--Footer-->
+    <footer>
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-6 col text-left">
+                    <p class="footer-text">
+                        Version: 1.1.24
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-6 text-right">
+                    <p class="footer-text">
+                        Copyright &copy; Tatvasoft All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer Ends-->
+    
+    <!--jQuery-->
+    <script src="../js/jquery-3.5.1.min.js"></script>
+
+    <!--bootstrap JS-->
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+
+    <!--Custom javascript-->
+    <script src="../js/script.js"></script>
+    
+</body>
+</html>

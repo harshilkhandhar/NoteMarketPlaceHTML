@@ -1,0 +1,492 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <title>Notes Under Review</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="../images/favicon.ico">
+
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+     <!--font - awesome-->
+     <link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css">
+
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.min.css">
+
+    <!--style css-->
+    <link rel="stylesheet" href="../css/style.css">
+
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="../css/responsive.css">
+
+</head>
+<body>
+
+
+  <header>
+    <nav class="navbar navbar-expand-lg  bg-white white-nav-top fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../Front Pages/Home Page.html"><img src="../images/logo.png" alt="logo"></a>
+        <button class="navbar-toggler collapsed col-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="mobile-nav-close-btn">&times;</span>
+            <span class="mobile-nav-open-btn">&#9776;</span>
+        </button>
+        <div class="collapse navbar-collapse"  id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link titles" href="DashBoardAdimin.html">Dashboard</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Notes</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                    <a href="Notes Under Review.html" class="dropdown-item">Notes Under Review</a>
+                    <a href="Published Notes.html" class="dropdown-item">Published Notes</a>
+                    <a href="Downloaded Notes.html" class="dropdown-item">Download Notes</a>
+                    <a href="Rejected Notes.html" class="dropdown-item">Rejected Notes</a>
+                    </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link titles" href="Members Details.html">Members</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Reports</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                    <a href="Spam Report.html" class="dropdown-item">Spam Reports</a>
+                    </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Settings</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                  <a href="Manage System Configuration.html" class="dropdown-item">Manage System Configuration</a>
+                  <a href="Manage Administrator.html" class="dropdown-item">Manage Administrator</a>
+                  <a href="Manage Category.html" class="dropdown-item">Manage Category</a>
+                  <a href="Manage Type.html" class="dropdown-item">Manage Type</a>
+                  <a href="Manage Country.html" class="dropdown-item">Manage Countries</a>
+                  </div>
+          </li>
+            <li class="nav-item dropdown admin-profile">
+                <a class="nav-link" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/reviewer-1.png"alt="customer-image"></a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                <a href="My Profile.html" class="dropdown-item">Update Profile</a>
+                <a href="../Front Pages/Change Password.html" class="dropdown-item">Change Password</a>
+                <a href="../Front Pages/Login.html" class="dropdown-item logout-link">LOGOUT</a>
+              </div>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link titles" href="../Front Pages/Login.html">Logout</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+    <section class="dashboard">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading-01">
+                                <h2>Notes Under Review</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="" class="titles">Seller</label>
+                            <select class="form-control form-control-md select admin-dropdown default-text" value="Khayati">
+                                <option>Khayati</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="row">
+                            <div class="col-md-8 col-sm-8 col-8">
+                                <div class="form-group dash-search" id="dashboard-btn">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                    <input type="text" class="form-control" placeholder="Search">
+                                  </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div id="dashboard-btn">
+                                    <a class="btn btn-admin btn-home-03" href="#" target="save" role="button">search</a>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="row table-responsive">
+                      <table class="table review-table">
+                        <thead>
+                          <tr class="titles">
+                            <th scope="col">SR NO.</th>
+                            <th scope="col">NOTE TITLE</th>
+                            <th scope="col">CATEGORY</th>
+                            <th scope="col">SELLER</th>
+                            <th scope="col"></th>
+                            <th scope="col">DATE ADDED</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col" class="text-center">ACTION</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody class="table-data text-center">
+                          <tr>
+                            <td>1.</td>
+                            <td class="text-left"><a href="">Software Development</a></td>
+                            <td class="text-left">IT</td>
+                            <td class="text-left">Khayati Patel</td>
+                            <td><img src="../images/eye.png" alt="eye-image"></td>
+                            <td>09-10-2020,10:10</td>
+                            <td class="text-left">InReview</td>
+                            <td class="text-left review">
+                              <a class="btn btn-notes-under-preview btn-approve" href="#" target="save" role="button">Approve</a>
+                              <a class="btn btn-notes-under-preview btn-reject" href="#myModal1" target="save" role="button" data-toggle="modal">Reject</a>
+                              <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">InReview</a>
+                          </td>
+                          <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/dots.png"alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                              <a href="" class="dropdown-item">View More Details</a>
+                              <a href="" class="dropdown-item">Download Notes</a>
+                            </div>
+                          </td>
+                          </tr>
+                          <tr>
+                            <td>2.</td>
+                            <td class="text-left"><a href="">Computer Basic</a></td>
+                            <td class="text-left">Computer</td>
+                            <td class="text-left">Rahul Shah</td>
+                            <td><img src="../images/eye.png" alt="eye-image"></td>
+                            <td>10-10-2020,12:30</td>
+                            <td class="text-left">Submited for Review</td>
+                            <td class="text-left review">
+                              <a class="btn btn-notes-under-preview btn-approve" href="#" target="save" role="button">Approve</a>
+                              <a class="btn btn-notes-under-preview btn-reject" href="#myModal2" target="save" role="button" data-toggle="modal">Reject</a>
+                              <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">InReview</a>
+                          </td>
+                          <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/dots.png"alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                              <a href="" class="dropdown-item">View More Details</a>
+                              <a href="" class="dropdown-item">Download Notes</a>
+                            </div>
+                          </td>
+                          </tr>
+                          <tr class="table-data-2">
+                            <td>3.</td>
+                            <td class="text-left"><a href="">Human Body</a></td>
+                            <td class="text-left">Science</td>
+                            <td class="text-left">Suman Trivedi</td>
+                            <td><img src="../images/eye.png" alt="eye-image"></td>
+                            <td>11-10-2020,01:00</td>
+                            <td class="text-left">InReview</td>
+                            <td class="text-left review">
+                              <a class="btn btn-notes-under-preview btn-approve" href="#" target="save" role="button">Approve</a>
+                              <a class="btn btn-notes-under-preview btn-reject" href="#myModal3" target="save" role="button" data-toggle="modal">Reject</a>
+                              <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">InReview</a>
+                          </td>
+                          <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/dots.png"alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                              <a href="" class="dropdown-item">View More Details</a>
+                              <a href="" class="dropdown-item">Download Notes</a>
+                            </div>
+                          </td>
+                          </tr>
+                          <tr>
+                            <td>4.</td>
+                            <td class="text-left"><a href="">World War 2</a></td>
+                            <td class="text-left">History</td>
+                            <td class="text-left">Raj Malhotra</td>
+                            <td><img src="../images/eye.png" alt="eye-image"></td>
+                            <td>12-10-2020,10:10</td>
+                            <td class="text-left">InReview</td>
+                            <td class="text-left review">
+                              <a class="btn btn-notes-under-preview btn-approve" href="#" target="save" role="button">Approve</a>
+                              <a class="btn btn-notes-under-preview btn-reject" href="#myModal4" target="save" role="button" data-toggle="modal">Reject</a>
+                              <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">InReview</a>
+                          </td>
+                          <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/dots.png"alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                              <a href="" class="dropdown-item">View More Details</a>
+                              <a href="" class="dropdown-item">Download Notes</a>
+                            </div>
+                          </td>
+                          </tr>
+                          <tr>
+                            <td>5.</td>
+                            <td class="text-left"><a href="">Accounting</a></td>
+                            <td class="text-left">Account</td>
+                            <td class="text-left">Niya Patel</td>
+                            <td><img src="../images/eye.png" alt="eye-image"></td>
+                            <td>13-10-2020,11:25</td>
+                            <td class="text-left">InReview</td>
+                            <td class="text-left review">
+                              <a class="btn btn-notes-under-preview btn-approve" href="#" target="save" role="button">Approve</a>
+                              <a class="btn btn-notes-under-preview btn-reject" href="#myModal5" target="save" role="button" data-toggle="modal">Reject</a>
+                              <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">InReview</a>
+                          </td>
+                          <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="../images/dots.png"alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                              <a href="" class="dropdown-item">View More Details</a>
+                              <a href="" class="dropdown-item">Download Notes</a>
+                            </div>
+                          </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                    </div>
+  
+                    <section class="dashboard-pagination">
+                      <div class="pagelist">
+                          <nav aria-label="Page navigation example">
+                              <ul class="pagination justify-content-center">
+                                <li class="page-item">
+                                  <a class="page-link" href="#"><img src="../images/left-arrow.png" alt="left-arrow"></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                                <li class="page-item">
+                                  <a class="page-link" href="#"><img src="../images/right-arrow.png" alt="right-arrow"></a>
+                                </li>
+                              </ul>
+                            </nav>
+                      </div>
+                  </section>
+                </div>
+                
+              </section>
+                
+    <!--Footer-->
+    <hr>
+    <footer>
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-6 text-left">
+                    <p class="footer-text">
+                        Version: 1.1.24
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-6 text-right">
+                    <p class="footer-text">
+                        Copyright &copy; Tatvasoft All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer Ends-->
+
+    
+        <!--model-->
+        <!-- Button trigger modal -->
+         <!-- Modal1 -->
+         <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                      <div>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true"><img src="../images/close.png" alt="closeimage"></span>
+                          </button>
+                      </div>
+                      <div id="model-content">
+                           <div class="container">
+                             <div class="row">
+                               <div class="col-md-12">
+                                 <div class="home-03-info">
+                                    <h3>Software Development-IT</h3>
+                                 </div>
+                               </div>
+                               <div class="col-md-12">
+                                <div class="form-group input-flid">
+                                  <label for="description" class="titles">Remarks</label>
+                                  <textarea class="form-control" id="description" rows="3" placeholder="Write remarks"></textarea>
+                              </div>  
+                              </div>
+                              <div class="col-md-12 review text-right">
+                                <a class="btn btn-notes-under-preview btn-reject" href="#" target="save" role="button">Reject</a>
+                                <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
+                              </div>
+                             </div>
+                           </div>  
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+       <!-- Modal2 -->
+       <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><img src="../images/close.png" alt="closeimage"></span>
+                        </button>
+                    </div>
+                    <div id="model-content">
+                         <div class="container">
+                           <div class="row">
+                             <div class="col-md-12">
+                               <div class="home-03-info">
+                                  <h3>Computer Basic-Computer</h3>
+                               </div>
+                             </div>
+                             <div class="col-md-12">
+                              <div class="form-group input-flid">
+                                <label for="description" class="titles">Remarks</label>
+                                <textarea class="form-control" id="description" rows="3" placeholder="Write remarks"></textarea>
+                            </div>  
+                            </div>
+                            <div class="col-md-12 review text-right">
+                              <a class="btn btn-notes-under-preview btn-reject" href="#" target="save" role="button">Reject</a>
+                              <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
+                            </div>
+                           </div>
+                         </div>  
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Modal3 -->
+        <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                  <div class="modal-body">
+                      <div>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true"><img src="../images/close.png" alt="closeimage"></span>
+                          </button>
+                      </div>
+                      <div id="model-content">
+                           <div class="container">
+                             <div class="row">
+                               <div class="col-md-12">
+                                 <div class="home-03-info">
+                                    <h3>Human Body-Science</h3>
+                                 </div>
+                               </div>
+                               <div class="col-md-12">
+                                <div class="form-group input-flid">
+                                  <label for="description" class="titles">Remarks</label>
+                                  <textarea class="form-control" id="description" rows="3" placeholder="Write remarks"></textarea>
+                              </div>  
+                              </div>
+                              <div class="col-md-12 review text-right">
+                                <a class="btn btn-notes-under-preview btn-reject" href="#" target="save" role="button">Reject</a>
+                                <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
+                              </div>
+                             </div>
+                           </div>  
+                      </div>
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+       <!-- Modal4 -->
+       <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><img src="../images/close.png" alt="closeimage"></span>
+                        </button>
+                    </div>
+                    <div id="model-content">
+                         <div class="container">
+                           <div class="row">
+                             <div class="col-md-12">
+                               <div class="home-03-info">
+                                  <h3>World War 2-History</h3>
+                               </div>
+                             </div>
+                             <div class="col-md-12">
+                              <div class="form-group input-flid">
+                                <label for="description" class="titles">Remarks</label>
+                                <textarea class="form-control" id="description" rows="3" placeholder="Write remarks"></textarea>
+                            </div>  
+                            </div>
+                            <div class="col-md-12 review text-right">
+                              <a class="btn btn-notes-under-preview btn-reject" href="#" target="save" role="button">Reject</a>
+                              <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
+                            </div>
+                           </div>
+                         </div>  
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal5 -->
+     <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+              <div class="modal-body">
+                  <div>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true"><img src="../images/close.png" alt="closeimage"></span>
+                      </button>
+                  </div>
+                  <div id="model-content">
+                       <div class="container">
+                         <div class="row">
+                           <div class="col-md-12">
+                             <div class="home-03-info">
+                                <h3>Accounting-Account</h3>
+                             </div>
+                           </div>
+                           <div class="col-md-12">
+                            <div class="form-group input-flid">
+                              <label for="description" class="titles">Remarks</label>
+                              <textarea class="form-control" id="description" rows="3" placeholder="Write remarks"></textarea>
+                          </div>  
+                          </div>
+                          <div class="col-md-12 review text-right">
+                            <a class="btn btn-notes-under-preview btn-reject" href="#" target="save" role="button">Reject</a>
+                            <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
+                          </div>
+                         </div>
+                       </div>  
+                  </div>
+              </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  
+    
+    <!--jQuery-->
+    <script src="../js/jquery-3.5.1.min.js"></script>
+
+    <!--popper.js-->
+    <script src="../js/popper.min.js"></script>
+
+    <!--bootstrap JS-->
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+
+    <!--Custom javascript-->
+    <script src="../js/script.js"></script>
+    
+</body>
+</html>

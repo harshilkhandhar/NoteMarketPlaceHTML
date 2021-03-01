@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <title>Sign Up</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+     <!--font - awesome-->
+     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+    <!--style css-->
+    <link rel="stylesheet" href="css/style.css">
+
+     <!--Responsive CSS-->
+     <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+<body>
+     <!--Home-->
+     <section id="home">
+
+        <!--Background Image-->
+        <div class="home-bg-image-signup"> 
+            <!--Home content-->
+        <img src="images/top-logo.png" alt="logo" class="login-img-signup">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class=" col-12 col-sm-6 col-md-5">
+                    <form class="form-container form-container-signup">
+                        <div class="login-1">
+                            <div class="heading-01 text-center">
+                                <h2>Create an Account</h2>
+                                <p class="login-pera">Enter your detail to signup</p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <p id="signup-pera"><i class="fa fa-check-circle"></i>   Your account has been successfilly created.</p>
+                        </div>
+                        <div class="form-group email-flid">
+                            <label for="InputFirstName"class="titles">First Name *</label>
+                            <input type="text" class="form-control InputEmail1" value="john">
+                          </div>
+                          <div class="form-group email-flid">
+                            <label for="InputLastName" class="titles">Last Name *</label>
+                            <input type="text" class="form-control" id="InputLastName" placeholder="Enter your last name">
+                          </div>
+                        <div class="form-group email-flid">
+                          <label class="titles">Email *</label>
+                          <input type="email" class="form-control" id="InputEmail" placeholder="Enter your email address">
+                        </div>
+                        <div class="form-group pass-flid">
+                            <label class="titles">Password</label>
+                            <input type="password" class="form-control" id="InputSignupPassword1" placeholder="Enter your password" name="password">
+                            <span toggle="#InputSignupPassword1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            
+                          </div>
+                          <div class="form-group" id="pass-flid">
+                            <label class="titles">Conform Password</label>
+                            <input type="password" class="form-control" id="InputSignupPassword2" placeholder="Re-enter your password" name="password">
+                            <span toggle="#InputSignupPassword2" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            
+                          </div>
+                        <button type="submit" class="btn btn-lg btn-block login-btn">sign up</button>
+                        <div id="login-end" >
+                            <div class="titles text-center">Already have an account? <a href="login.html" style="color: #6255a5;">Login</a></div>
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+         
+        
+    </section>
+    <!--Home Ends-->
+    
+    <!--jQuery-->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <!--bootstrap JS-->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!--Custom javascript-->
+    <script src="js/script.js"></script>
+    
+</body>
+</html>

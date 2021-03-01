@@ -1,0 +1,664 @@
+/*--------------- Mobile Navbar --------------*/
+.navbar-scroll-content {
+    max-height: 100%;
+    overflow-y:scroll;
+    height : 100vh;
+    -webkit-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+.navbar-fixed-height {
+    height: 90px;
+    -webkit-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+
+.navbar-collapse {
+    -webkit-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+
+nav .navbar-toggler {
+    color: #6255a5;
+    border-color: rgba(0, 0, 0, 0);
+    margin-left: auto;
+}
+
+.nav .navbar-toggler span {
+    float: right;
+}
+
+.mobile-nav-open-btn {
+    float: right;
+    font-size: 35px;
+    color: #6255a5;
+}
+
+.mobile-nav-close-btn {
+    float: right;
+    font-size: 35px;
+    color: #6255a5;
+}
+
+button:focus {
+    outline: 0px dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+}
+
+.navbar-toggler > .mobile-nav-close-btn {
+    display: inline;
+}
+
+.navbar-toggler.collapsed > .mobile-nav-close-btn,
+.navbar-toggler:not(.collapsed) > .mobile-nav-open-btn {
+    display: none;
+}
+
+/*==================================================
+			Bootstrap 4 Media Queries        
+==================================================*/
+/* Large Devices (Desktops & Laptops) */
+@media (min-width: 1200px) and (max-width: 1299px) {
+    .form-container{
+        position: relative;
+        top: 40vh;
+    }
+    .form-container-forgot{
+        position: relative;
+        top: 50vh;
+    }
+    .login-img-forgotpass{
+        position: relative;
+        left: 39%;
+        top:28%;
+    }
+    .form-container-signup{
+        position: relative;
+        top: 75vh;
+    }
+    .login-img-signup{
+        position: relative;
+        left: 40%;
+        top: 31%;
+    }
+}
+
+/* Medium Devices (Landscape Tablets & Medium Desktops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    .notes-img{
+        width: 290px;
+        height: 223px;
+    }
+    .content-notes{
+    width: 290px;
+    height: 300px;
+    }
+    .colum-1 h3{
+        font-size: 18px;
+    }
+    .colum-1 .flag,
+    ul.package li{
+        font-size: 13px;
+        line-height: 10px;
+    }
+    ul.package{
+        padding: 5px;
+        height: 10px;
+    }
+    .note-img img{
+        height: 250px;
+        width: 190px;
+    }
+    .home-03-info h3{
+        font-size: 22px;
+    }
+    #note-name h2{
+        font-size: 25px;
+    }
+    .type h2{
+        font-size: 16px;
+    }
+    .note-description p{
+        font-size: 13px;
+    }
+    .notes-detail-left h4,
+    .notes-detail-right h4{
+        font-size: 15px;
+        line-height: 25px;
+    }
+    .customber-reviewr-part h4{
+        font-size: 20px;
+    }
+    .notes-btn {
+        font-size: 12px;
+    }
+    .upload-notes{
+        position: relative;
+        top: -90px;
+        left: 200px;
+    }
+    .delete-img{
+        position: relative;
+        left: 200px;
+    }
+    .rating-star{
+        position: relative;
+        left: 120px;
+    }
+    #searchbar{
+        position: relative;
+        left: 35px;
+    }
+    .btn-admin{
+        width: 115px;
+    }
+    #Dashboard-btn{
+        position: relative;
+        left: 15px;
+    }
+    .admindash-dropdown{
+        width: 120px;
+        position: relative;
+        left: -10px;
+    }
+    .add-administrator{
+        width: 210px;
+        margin-bottom: 10px;
+    }
+    .admindashboard-dropdown{
+        width: 90px;
+    }
+    #forgot-pass{
+        margin-left: 60px;
+    }
+   
+    .login-img{
+        position: relative;
+        left: 36%;
+        top: 20%;
+    }
+    .login-pera{
+        font-size: 12px;
+    }
+    #pdf-demo iframe{
+        width: 450px;
+    }
+    .form-container-forgot{
+        position: relative;
+        top: 45vh;
+    }
+    .login-img-forgotpass{
+        position: relative;
+        left: 36%;
+        top: 26%;
+    }
+    .form-container-signup{
+        position: relative;
+        top: 75vh;
+    }
+    .login-img-signup{
+        position: relative;
+        left: 38%;
+        top: 31%;
+    }
+    
+}
+
+/* Small Devices (Portrait Tablets & Small Desktops) */
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .author img{
+        height: 70px;
+        width: 70px;
+    }
+    .author .author-name-des h4{
+        font-size: 20px;
+    }
+    .customber-pera{
+        font-size: 14px;
+    }
+    .navbar-brand {
+        padding-left: 20px;
+    }
+    .notes-img{
+        width: 230px;
+        height: 223px;
+    }
+    .content-notes{
+    width: 230px;
+    height: 300px;
+    }
+    .colum-1 h3{
+        font-size: 14px;
+    }
+    .colum-1 .flag,
+    ul.package li{
+        font-size: 10px;
+        line-height: 10px;
+    }
+    ul.package{
+        padding: 6px;
+        height: 10px;
+    }
+    #star-description{
+        font-size:11px ;
+    }
+    .stars{
+        font-size: 13px;
+    }
+    .page-item.active .page-link,ul.pagination li a,
+    .type h2,
+    .flag{
+        font-size: 12px;
+    }
+    .note-img img{
+        height: 200px;
+        width: 140px;
+    }
+    .home-banner-heading h2{
+        font-size: 45px;
+    }
+    .heading-01 h2{
+        font-size: 28px;
+    }
+    .home-03-info h3{
+        font-size: 20px;
+    }
+    .titles{
+        font-size: 14px;
+    } 
+    .form-control{
+        font-size: 14px;
+        height: 45px;
+    }
+    #note-name h2{
+        font-size: 18px;
+    }
+    .note-description p{
+        font-size: 13px;
+    }
+    .notes-detail-left h4,
+    .notes-detail-right h4{
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .customber-reviewr-part h4{
+        font-size: 16px;
+    }
+    .customber-reviewr-image{
+        width: 40px;
+    }
+    .notes-btn {
+        font-size: 10px;
+    }
+    .heading{
+        font-size: 14px;
+    }
+    #head-2{
+        font-size: 22px;
+    }
+    .note-preview{
+        height: 135px;
+    }
+    .upload-notes{
+        position: relative;
+        top: -90px;
+        left: 130px;
+    }
+    .titles th,
+    .table-data tr>td{
+        font-size: 14px;
+    }
+    .btn-general{
+        font-size: 15px;
+    }
+    .table-data tr>td>img{
+        width: 20px;
+    }
+    .delete-img{
+        position: relative;
+        left: 150px;
+    }
+    .rating-star{
+        position: relative;
+        left: 90px;
+    }
+    .login-img-forgotpass{
+        position: relative;
+        left: 31%;
+        top: 25%;
+    }
+    .form-container{
+        position: relative;
+        left: -70px;
+        width: 400px;
+        top: 250px;
+        padding: 40px;
+    }
+    .login-img{
+        position: relative;
+        top: 25%;
+        left: 32%;
+    }
+    .form-container-signup{
+        position: relative;
+        top: 75vh;
+    }
+    .login-img-signup{
+        position: relative;
+        left: 33%;
+        top: 31%;
+    }
+    #forgot-pass{
+       margin-left: 70px;
+    }
+    .login-pera{
+        font-size: 13px;
+    }
+    .InputEmail1,
+    #InputPassword1{
+        width: 300px;
+    }
+    #searchbar{
+        position: relative;
+        left: 35px;
+    }
+    .btn-admin{
+        position: relative;
+        left: -5px;
+        width: 80px;
+    }
+    #Dashboard-btn{
+        position: relative;
+        left: 15px;
+    }
+    .dashboard-heading{
+        font-size: 20px;
+    }
+    .admindash-dropdown{
+        width: 100px;
+        position: relative;
+        left: 0px;
+        height: 30px;
+    }
+    .add-administrator{
+        width: 210px;
+        margin-bottom: 10px;
+    }
+    .tb-div p{
+        font-size: 11px;
+    }
+    .downloaded-dropdown{
+        width: 100px;
+        height: 40px;
+    }
+    .admindashboard-dropdown{
+        width: 80px;
+        height: 40px;
+    }
+    #member-Detail-img{
+        width: 110px;
+        height: 120px;
+    }
+    .member-right{
+      position: relative;
+      left: 20px;
+    }
+    #pdf-demo iframe{
+        width: 330px;
+    }
+
+}
+
+
+/* Extra Small Devices (Landscape Phones & Portrait Tablets) */
+
+@media (max-width: 767px) {
+    
+    .customber-1-1{
+        margin-bottom: 30px;
+    }
+    .customber-1-2{
+        position :relative;
+        right: 10px;
+    }
+    .home-pera p{
+        font-size: 16px;
+        line-height: 20px;
+    }
+    .author img{
+        width: 80px;
+        height: 80px;
+    }
+    .navbar-brand {
+        padding-left: 20px;
+    }
+    #part-1,#part-2{
+        margin-bottom: 30px;
+    }
+    .footer-text{
+        font-size: 13px;
+    }
+    .notes-heading-1{
+        margin-top: 20px;
+    }
+    .note-img img{
+        height: 230px;
+        width: 170px;
+    }
+    #aboutnote{
+        position: relative;
+        left: 70px;
+        width: 240px;
+    }
+    .home-banner-heading h2{
+        font-size: 35px;
+    }
+    .heading-01 h2{
+        font-size: 25px;
+    }
+    .home-03-info h3,
+    #home-text p{
+        font-size: 18px;
+    }
+    .titles{
+        font-size: 14px;
+    } 
+    .form-control{
+        font-size: 13px;
+        height: 35px;
+    }
+    #note-name h2{
+        font-size: 18px;
+    }
+    .note-description p{
+        font-size: 13px;
+    }
+    .notes-detail-left h4,
+    .notes-detail-right h4{
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .customber-reviewr-part h4{
+        font-size: 18px;
+    }
+    .notes-btn {
+        font-size: 10px;
+        margin-top: -20px;
+        margin-bottom: 10px;
+    }
+    #home-add-notes a{
+        margin-bottom: 10px;
+    }
+    .form-container{
+        position: relative;
+        top: 40vh;
+        left: -70px;
+        width: 400px;
+    }
+    .login-img{
+        position: relative;
+        left: 32%;
+    }
+    .login-img-forgotpass{
+        position: relative;
+        left:33%;
+        top: 23%;
+    }
+    .form-container-forgot{
+        position: relative;
+        top: 40vh;
+    }
+    .form-container-signup{
+        position: relative;
+        top: 75vh;
+    }
+    .login-img-signup{
+        position: relative;
+        left: 33%;
+        top: 31%;
+    }
+    .InputEmail1,
+    #InputPassword1{
+        width: 300px;
+    }
+    .login-pera{
+        font-size: 13px;
+    }
+    #forgot-pass{
+        margin-left: 60px;
+    }
+    .note-preview{
+        height: 135px;
+    }
+    .upload-notes{
+        position: relative;
+        top: -90px;
+        left: 220px;
+    }
+    .titles th,
+    .table-data tr>td{
+        font-size: 13px;
+    } 
+    .btn-general{
+        font-size: 15px;
+        width: 120px;
+    }
+    .table-data tr>td>img{
+       width: 18px;
+    }
+    #email-btn{
+        width: 300px;
+    }
+    .card-header h6{
+        font-size: 13px;
+    }
+    .card-body p{
+        font-size: 12px;
+    }
+    .delete-img{
+        position: relative;
+        left: 250px;
+    }
+    .admin-dropdown{
+        height: 40px;
+    }
+    .add-administrator{
+        font-size: 18px;
+        width: 210px;
+        margin-bottom: 10px;
+    }
+    .admindashboard-dropdown{
+        position: relative;
+        left: -40px;
+        width: 120px;
+        height: 40px;
+    }
+    .vl{
+        border-left: none;
+    }
+    .member-right{
+        margin-bottom: 10px;
+    }
+    .member-detail-right h4,
+    .member-detail-left h4{
+        font-size: 13px;
+    }
+    .form-check-input-1{
+        width: 25px;
+        height: 25px;
+    }
+    .btn-admin{
+        width: max-content;
+    }
+    .buyerrequest-btn{
+        padding-left: 0px;
+    }
+    #pdf-demo iframe{
+        width: 510px;
+    }
+
+}
+
+@media (max-width: 567px){
+    .form-container{
+        position: relative;
+        left: 25px;
+        width: 300px;
+        padding: 20px;
+        top: 42vh;
+    }
+    .login-img{
+        position: relative;
+        left: 10%;
+        top: 25%;
+    }
+    .login-img-forgotpass{
+        position: relative;
+        left:10%;
+        top: 25%;
+    }
+    .form-container-forgot{
+        position: relative;
+    }
+    .form-container-signup{
+        position: relative;
+        top: 75vh;
+        left:13%;
+    }
+    .login-img-signup{
+        position: relative;
+        left: 20%;
+        top: 31%;
+    }
+    .InputEmail1,
+    #InputPassword1{
+        width: 260px;
+    }
+    .login-1 h2{
+        margin-bottom: 10px;
+    }
+    .note-img img{
+        height: 200px;
+        width: 130px;
+    }
+    #aboutnote{
+        position: relative;
+        left: 50px;
+        width: 240px;
+    }
+    .admindashboard-dropdown{
+        position: relative;
+        left: 5px;
+        width: 80px;
+    }
+    .upload-notes{
+        position: relative;
+        left: 150px;
+    }
+    #forgot-pass{
+        margin-left: 40px;
+     }
+}

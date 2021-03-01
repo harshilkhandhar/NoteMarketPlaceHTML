@@ -1,0 +1,312 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <title>User Profile</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+     <!--font - awesome-->
+     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+    <!--style css-->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="css/responsive.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg  bg-white white-nav-top fixed-top">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="Home Page.html"><img src="images/logo.png" alt="logo"></a>
+            <button class="navbar-toggler collapsed col-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="mobile-nav-close-btn">&times;</span>
+                <span class="mobile-nav-open-btn">&#9776;</span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link titles" href="Search Page.html">Search Notes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link titles" href="Dash Board.html">Sell Your Notes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link titles" href="FAQ Page.html">FAQ</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link titles" href="Contect Us.html">Contect Us</a>
+                </li>
+                <li class="nav-item dropdown admin-profile">
+                    <a class="nav-link dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/reviewer-1.png"alt="customer-image"></a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                    <a href="Usre Profile.html" class="dropdown-item">My Profile</a>
+                    <a href="My Downloads.html" class="dropdown-item">My Downloads</a>
+                    <a href="MySold Notes.html" class="dropdown-item">My Sold Notes</a>
+                    <a href="My Rejected Notes.html" class="dropdown-item">My Rejected Notes</a>
+                    <a href="Change Password.html" class="dropdown-item">Change Password</a>
+                    <a href="login.html" class="dropdown-item logout-link">LOGOUT</a>
+                  </div>
+                  </li>
+                <li class="nav-item">
+                    <a class="nav-link titles" href="login.html">Logout</a>
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    </header>
+
+    <section class="banner-background">
+        <div class="info text-center home-banner-heading">
+            <h2>User Profile</h2>
+        </div>
+    </section>
+
+    <section class="Add-notes">
+        <div class="container">
+            <div class="row first-component">
+                <div class="col-md-12">
+                   <div class="heading-01">
+                    <h2>Basic Profile Details</h2>
+                   </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--left side-->
+                <div class="col-md-6">
+                    <div>
+                        <form>
+                            <div class="form-group input-flid">
+                                <label for="text-1" class="titles">First Name *</label>
+                                <input type="text" class="form-control" id="text-1" placeholder="Enter your first name">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--right side-->
+                <div class="col-md-6">
+                    <div id="category">
+                        <form>
+                            <div class="form-group input-flid">
+                                <label for="text-1" class="titles">Last Name *</label>
+                                <input type="text" class="form-control" id="text-1" placeholder="Enter your last name">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--left side-->
+                <div class="col-md-6">
+                    <div>
+                        <form>
+                            <div class="form-group input-flid">
+                                <label for="text-1" class="titles">Email *</label>
+                                <input type="email" class="form-control" id="text-1" placeholder="Enter your email address">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--right side-->
+                <div class="col-md-6">
+                    <div id="category">
+                        <form>
+                            <div class="form-group input-flid">
+                                <label for="text-1" class="titles">Date Of Birth</label>
+                                <input type="text" class="form-control" id="text-1" placeholder="Enter your date of birt">
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--left side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">Gender</label>
+                        <select class="form-control form-control-md" placeholder="Select your gender">
+                            <option >Select your Gender</option>
+                          </select>
+                    </div>   
+                </div>
+                <!--right side-->
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-5 phone">
+                            <div class="form-group input-flid">
+                                <label class="titles">Phone Number</label>
+                                <select class="form-control form-control-md" placeholder="+91">
+                                    <option >+91</option>
+                                </select>
+                            </div>  
+                        </div>
+                        <div class="col-md-7">
+                            <div class="form-group input-flid">
+                                <label class="titles">&nbsp;</label>
+                                <input type="number" class="form-control" id="text-1" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label for="text-1" class="titles">Profile Picture</label>
+                        <input type="text" class="form-control text-center note-preview" placeholder="">
+                        <img src="images/upload-file.png" alt="upload-file" class="upload-notes">
+                    </div>   
+                </div>
+            </div>
+        </div>
+
+        
+    </section>
+    <section class="Add-notes">
+        <div class="institution-information">
+            <div class="container">
+                <div class="row first-component">
+                    <div class="col-md-12">
+                       <div class="heading-01">
+                        <h2>Address Details</h2>
+                       </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--left side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">Address Line 1 *</label>
+                            <input type="text" class="form-control" id="text-1" placeholder="Enter your address">
+                        </div>   
+                    </div>
+                    <!--right side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">Address Line 2</label>
+                            <input type="text" class="form-control" id="text-1" placeholder="Enter your address">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--left side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">City *</label>
+                            <input type="text" class="form-control" id="text-1" placeholder="Enter your city">
+                        </div>   
+                    </div>
+                    <!--right side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">State *</label>
+                            <input type="text" class="form-control" id="text-1" placeholder="Enter your state">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--left side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">ZipCode *</label>
+                            <input type="number" class="form-control" id="text-1" placeholder="Enter your city">
+                        </div>   
+                    </div>
+                    <!--right side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">Country *</label>
+                            <select class="form-control form-control-md" placeholder="Select your country">
+                                <option >Select your country</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="Add-notes">
+        <div class="course-detail">
+            <div class="container">
+                <div class="row first-component">
+                    <div class="col-md-12">
+                       <div class="heading-01">
+                        <h2>University and Collage Information</h2>
+                       </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <!--left side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">University</label>
+                            <input type="text" class="form-control" id="institution-name" placeholder="Enetr your university">
+                        </div>   
+                    </div>
+                    <!--right side-->
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label class="titles">Collage</label>
+                            <input type="text" class="form-control" id="institution-name" placeholder="Enetr your Collage">
+                        </div> 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="home-add-notes">
+                            <a class="btn btn-general btn-home-03" href="#" target="save" role="button">submit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <hr>
+        <!--Footer-->
+        <footer>
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-6 text-left">
+                        <p class="footer-text">
+                            Copyright &copy; Tatvasoft All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-6  text-right">
+                        <ul class="social-list">
+                            <li><a href="Admin pages/Manage System Configuration.html"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="Admin pages/Manage System Configuration.html"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="Admin pages/Manage System Configuration.html"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Footer Ends-->
+    
+    <!--jQuery-->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <!--bootstrap JS-->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+
+    <!--Custom javascript-->
+    <script src="js/script.js"></script>
+    
+</body>
+</html>
