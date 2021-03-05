@@ -431,6 +431,7 @@ ul.pagination{
     border:1px solid #d1d1d1;
     border-radius: 3px;
     height: 450px;
+    overflow: scroll;
 }
 
 .customber-reviewr-part{
@@ -859,7 +860,7 @@ ul.social-list li a i{
 /* =========================================
                 Login Page
 ============================================ */
-#home {
+.home {
     background: none;
     height: 100%;
 }
@@ -892,19 +893,8 @@ ul.social-list li a i{
     background-size: cover;
 }
 .login-img{
-    position: relative;
-    left: 40%;
-    top: 20%;
-}
-.login-img-signup{
-    position: relative;
-    left: 41%;
-    top: 26%;
-}
-.login-img-forgotpass{
-    position: relative;
-    left: 41%;
-    top: 26%;
+  margin-bottom: 15px;
+  margin-left: 120px;
 }
 .field-icon{
     float: right;
@@ -912,22 +902,18 @@ ul.social-list li a i{
     margin-right: 25px;
     color: #8a8a8a;
 }
+.login-form{
+    margin-top: 200px;
+}
+.login-form-signup{
+    margin-top: 400px;
+}
 .form-container{
-    position: relative;
-    top: 30vh;
     background: #fff;
     padding: 40px;
     border-radius: 3px;
     z-index: 3;
     box-shadow: 0px 0px 10px 0px #000;
-}
-.form-container-forgot{
-    position: relative;
-    top: 40vh;
-}
-.form-container-signup{
-    position: relative;
-    top: 50vh;
 }
 .login-1{
     margin-bottom: 25px;
@@ -945,7 +931,7 @@ ul.social-list li a i{
     font-weight: 400;
     line-height: 20px;
     color: #6255a5;
-    margin-left: 130px;
+    margin-left: 200px;
 }
 #password-error{
     font-family: "Open Sans";

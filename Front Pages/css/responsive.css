@@ -59,28 +59,6 @@ button:focus {
 ==================================================*/
 /* Large Devices (Desktops & Laptops) */
 @media (min-width: 1200px) and (max-width: 1299px) {
-    .form-container{
-        position: relative;
-        top: 40vh;
-    }
-    .form-container-forgot{
-        position: relative;
-        top: 50vh;
-    }
-    .login-img-forgotpass{
-        position: relative;
-        left: 39%;
-        top:28%;
-    }
-    .form-container-signup{
-        position: relative;
-        top: 75vh;
-    }
-    .login-img-signup{
-        position: relative;
-        left: 40%;
-        top: 31%;
-    }
 }
 
 /* Medium Devices (Landscape Tablets & Medium Desktops) */
@@ -170,39 +148,17 @@ button:focus {
         width: 90px;
     }
     #forgot-pass{
-        margin-left: 60px;
+        margin-left: 130px;
     }
-   
     .login-img{
-        position: relative;
-        left: 36%;
-        top: 20%;
+      margin-left: 70px;
     }
     .login-pera{
         font-size: 12px;
     }
     #pdf-demo iframe{
         width: 450px;
-    }
-    .form-container-forgot{
-        position: relative;
-        top: 45vh;
-    }
-    .login-img-forgotpass{
-        position: relative;
-        left: 36%;
-        top: 26%;
-    }
-    .form-container-signup{
-        position: relative;
-        top: 75vh;
-    }
-    .login-img-signup{
-        position: relative;
-        left: 38%;
-        top: 31%;
-    }
-    
+    }  
 }
 
 /* Small Devices (Portrait Tablets & Small Desktops) */
@@ -325,41 +281,15 @@ button:focus {
         position: relative;
         left: 90px;
     }
-    .login-img-forgotpass{
-        position: relative;
-        left: 31%;
-        top: 25%;
-    }
-    .form-container{
-        position: relative;
-        left: -70px;
-        width: 400px;
-        top: 250px;
-        padding: 40px;
-    }
     .login-img{
-        position: relative;
-        top: 25%;
-        left: 32%;
-    }
-    .form-container-signup{
-        position: relative;
-        top: 75vh;
-    }
-    .login-img-signup{
-        position: relative;
-        left: 33%;
-        top: 31%;
+       margin-left: 40px;
     }
     #forgot-pass{
-       margin-left: 70px;
+       margin-left: 40px;
+       font-size: 14px;
     }
     .login-pera{
         font-size: 13px;
-    }
-    .InputEmail1,
-    #InputPassword1{
-        width: 300px;
     }
     #searchbar{
         position: relative;
@@ -409,7 +339,6 @@ button:focus {
     #pdf-demo iframe{
         width: 330px;
     }
-
 }
 
 
@@ -492,43 +421,15 @@ button:focus {
     #home-add-notes a{
         margin-bottom: 10px;
     }
-    .form-container{
-        position: relative;
-        top: 40vh;
-        left: -70px;
-        width: 400px;
-    }
     .login-img{
-        position: relative;
-        left: 32%;
-    }
-    .login-img-forgotpass{
-        position: relative;
-        left:33%;
-        top: 23%;
-    }
-    .form-container-forgot{
-        position: relative;
-        top: 40vh;
-    }
-    .form-container-signup{
-        position: relative;
-        top: 75vh;
-    }
-    .login-img-signup{
-        position: relative;
-        left: 33%;
-        top: 31%;
-    }
-    .InputEmail1,
-    #InputPassword1{
-        width: 300px;
+       margin-left: 50px;
     }
     .login-pera{
         font-size: 13px;
     }
     #forgot-pass{
-        margin-left: 60px;
+        margin-left: 80px;
+        font-size: 14px;
     }
     .note-preview{
         height: 135px;
@@ -599,43 +500,16 @@ button:focus {
     #pdf-demo iframe{
         width: 510px;
     }
-
 }
 
 @media (max-width: 567px){
     .form-container{
-        position: relative;
-        left: 25px;
         width: 300px;
         padding: 20px;
-        top: 42vh;
+        margin-left: 20px;
     }
     .login-img{
-        position: relative;
-        left: 10%;
-        top: 25%;
-    }
-    .login-img-forgotpass{
-        position: relative;
-        left:10%;
-        top: 25%;
-    }
-    .form-container-forgot{
-        position: relative;
-    }
-    .form-container-signup{
-        position: relative;
-        top: 75vh;
-        left:13%;
-    }
-    .login-img-signup{
-        position: relative;
-        left: 20%;
-        top: 31%;
-    }
-    .InputEmail1,
-    #InputPassword1{
-        width: 260px;
+      margin-left: 30px;
     }
     .login-1 h2{
         margin-bottom: 10px;
