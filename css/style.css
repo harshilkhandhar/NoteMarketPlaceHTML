@@ -8,6 +8,7 @@ body {
 }
 
 body {
+    height: max-content;
     color: #333333;
 }
 
@@ -860,10 +861,6 @@ ul.social-list li a i{
 /* =========================================
                 Login Page
 ============================================ */
-.home {
-    background: none;
-    height: 100%;
-}
 .home-bg-image {
     position:absolute;
     top: 50%;

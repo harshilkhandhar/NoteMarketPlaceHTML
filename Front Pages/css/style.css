@@ -1,13 +1,13 @@
 /* =========================================
                 Html, Body
 ============================================ */
-html,
-body {
+html{
     width: 100%;
     height: 100%;
 }
 
 body {
+    height: max-content;
     color: #333333;
 }
 
@@ -860,10 +860,6 @@ ul.social-list li a i{
 /* =========================================
                 Login Page
 ============================================ */
-.home {
-    background: none;
-    height: 100%;
-}
 .home-bg-image {
     position:absolute;
     top: 50%;
@@ -912,7 +908,7 @@ ul.social-list li a i{
     background: #fff;
     padding: 40px;
     border-radius: 3px;
-    z-index: 3;
+    
     box-shadow: 0px 0px 10px 0px #000;
 }
 .login-1{
