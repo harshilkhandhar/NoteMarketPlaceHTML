@@ -1,7 +1,8 @@
 /* =========================================
                 Html, Body
 ============================================ */
-html{
+html,
+body {
     width: 100%;
     height: 100%;
 }
@@ -450,7 +451,7 @@ ul.pagination{
 .delete-img{
     position: relative;
     top: -20px;
-    left: 300px;
+    left: 260px;
 }
 
 /*Model*/
@@ -883,7 +884,7 @@ ul.social-list li a i{
     min-width: 100%;
     min-height:100%;
     width: auto;
-    height: 1300px;
+    height: 1400px;
     z-index: -1;
     background: url("../images/login-bg-with-overlay\ \(1\).jpg") no-repeat;
     background-size: cover;
@@ -894,7 +895,7 @@ ul.social-list li a i{
 }
 .field-icon{
     float: right;
-    margin-top: -30px;
+    margin-top: -35px;
     margin-right: 25px;
     color: #8a8a8a;
 }
@@ -902,13 +903,13 @@ ul.social-list li a i{
     margin-top: 200px;
 }
 .login-form-signup{
-    margin-top: 400px;
+    margin-top: 450px;
 }
 .form-container{
     background: #fff;
     padding: 40px;
     border-radius: 3px;
-    
+    z-index: 3;
     box-shadow: 0px 0px 10px 0px #000;
 }
 .login-1{
@@ -927,7 +928,7 @@ ul.social-list li a i{
     font-weight: 400;
     line-height: 20px;
     color: #6255a5;
-    margin-left: 200px;
+    margin-left: 240px;
 }
 #password-error{
     font-family: "Open Sans";
@@ -967,7 +968,7 @@ ul.social-list li a i{
     background-color: #6255a5;
     font-size: 18px;
     line-height: 22px;
-    font-style: "Open Sans";
+    font-family: "Open Sans";
     border-radius: 3px;
     text-transform: uppercase;
     margin-top: 30px;
@@ -1005,7 +1006,7 @@ ul.social-list li a i{
     background-color: #6255a5;
     font-size: 18px;
     line-height: 22px;
-    font-style: "Open Sans";
+    font-family: "Open Sans";
     border-radius: 3px;
     text-transform: uppercase;
 }
@@ -1062,8 +1063,8 @@ ul.social-list li a i{
     color: #6255a5;
 }
 .table-data-2{
-    -webkit-box-shadow: 0px 0px 20px 0px rgb(0,0,0,0.1);
-    box-shadow: 0px 0px 20px 0px rgb(0,0,0,0.1);
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
 }
 .dashboard-pagination{
     position: relative;
