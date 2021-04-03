@@ -1,0 +1,75 @@
+﻿
+@model  Notes_Market_Place.Models.User
+@{
+    Layout = null;
+}
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <title>Email Verification</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!--Font Awsome-->
+    <link rel="stylesheet" href="~/Content/css/font-awesome/css/font-awesome.min.css" />
+
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
+
+    <!--style css-->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+
+</head>
+
+<body>
+    @using (Html.BeginForm("EmailVerification", "Home", FormMethod.Post))
+    {
+        <section id="email">
+            <div class="container">
+                <div id="email-verification">
+                    <div id="logo">
+                        <img src="~/Content/images/logo.png" alt="logo">
+                    </div>
+                    <div class="heading-01">
+                        <h2>Email Verification</h2>
+                    </div>
+                    <div id="email-content">
+                        <h3 class="heading">Dear Smith,</h3>
+                    </div>
+                    <div id="email-description">
+                        <p class="titles">Thanks for signing.</p>
+                        <p class="titles">Simply click below for email verification.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-6">
+                            <button type="submit" class="btn btn-lg btn-block" id="email-btn">verify email address</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    }
+
+    <!--jQuery-->
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+
+    <!--bootstrap JS-->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!--Custom javascript-->
+    <script src="~/Scripts/script.js"></script>
+
+</body>
+
+</html>

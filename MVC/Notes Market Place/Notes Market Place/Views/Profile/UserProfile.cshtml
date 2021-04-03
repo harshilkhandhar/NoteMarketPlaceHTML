@@ -1,0 +1,221 @@
+﻿
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+
+<section class="banner-background">
+    <div class="info text-center home-banner-heading">
+        <h2>User Profile</h2>
+    </div>
+</section>
+
+<section class="Add-notes">
+    <div class="container">
+        <div class="row first-component">
+            <div class="col-md-12">
+                <div class="heading-01">
+                    <h2>Basic Profile Details</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--left side-->
+            <div class="col-md-6">
+                <div>
+                    <form>
+                        <div class="form-group input-flid">
+                            <label for="text-1" class="titles">First Name *</label>
+                            <input type="text" class="form-control" id="text-1" placeholder="Enter your first name">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--right side-->
+            <div class="col-md-6">
+                <div id="category">
+                    <form>
+                        <div class="form-group input-flid">
+                            <label for="text-1" class="titles">Last Name *</label>
+                            <input type="text" class="form-control" id="text-1" placeholder="Enter your last name">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--left side-->
+            <div class="col-md-6">
+                <div>
+                    <form>
+                        <div class="form-group input-flid">
+                            <label for="text-1" class="titles">Email *</label>
+                            <input type="email" class="form-control" id="text-1"
+                                   placeholder="Enter your email address">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--right side-->
+            <div class="col-md-6">
+                <div id="category">
+                    <form>
+                        <div class="form-group input-flid">
+                            <label for="text-1" class="titles">Date Of Birth</label>
+                            <input type="date" class="form-control" id="text-1"
+                                   placeholder="Enter your date of birth">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--left side-->
+            <div class="col-md-6">
+                <div class="form-group input-flid">
+                    <label class="titles">Gender</label>
+                    <select class="form-control form-control-md" placeholder="Select your gender">
+                        <option>Select your Gender</option>
+                    </select>
+                </div>
+            </div>
+            <!--right side-->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 phone">
+                        <div class="form-group input-flid">
+                            <label class="titles">Phone Number</label>
+                            <select class="form-control form-control-md" placeholder="+91">
+                                <option>+91</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="form-group input-flid">
+                            <label class="titles">&nbsp;</label>
+                            <input type="number" class="form-control" id="text-1"
+                                   placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group input-flid">
+                    <label for="file" class="titles">Profile Picture</label>
+                    <input type="file" class="form-control text-center note-preview">
+                    <img src="~/Content/images/upload-file.png" alt="upload-file" class="upload-notes">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<section class="Add-notes">
+    <div class="institution-information">
+        <div class="container">
+            <div class="row first-component">
+                <div class="col-md-12">
+                    <div class="heading-01">
+                        <h2>Address Details</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--left side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">Address Line 1 *</label>
+                        <input type="text" class="form-control" id="text-1" placeholder="Enter your address">
+                    </div>
+                </div>
+                <!--right side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">Address Line 2</label>
+                        <input type="text" class="form-control" id="text-1" placeholder="Enter your address">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--left side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">City *</label>
+                        <input type="text" class="form-control" id="text-1" placeholder="Enter your city">
+                    </div>
+                </div>
+                <!--right side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">State *</label>
+                        <input type="text" class="form-control" id="text-1" placeholder="Enter your state">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--left side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">ZipCode *</label>
+                        <input type="number" class="form-control" id="text-1" placeholder="Enter your city">
+                    </div>
+                </div>
+                <!--right side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">Country *</label>
+                        <select class="form-control form-control-md" placeholder="Select your country">
+                            <option>Select your country</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="Add-notes">
+    <div class="course-detail">
+        <div class="container">
+            <div class="row first-component">
+                <div class="col-md-12">
+                    <div class="heading-01">
+                        <h2>University and Collage Information</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!--left side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">University</label>
+                        <input type="text" class="form-control" id="institution-name"
+                               placeholder="Enetr your university">
+                    </div>
+                </div>
+                <!--right side-->
+                <div class="col-md-6">
+                    <div class="form-group input-flid">
+                        <label class="titles">Collage</label>
+                        <input type="text" class="form-control" id="institution-name"
+                               placeholder="Enetr your Collage">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="home-add-notes">
+                        <a class="btn btn-general btn-home-03" href="#" target="save" role="button">submit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

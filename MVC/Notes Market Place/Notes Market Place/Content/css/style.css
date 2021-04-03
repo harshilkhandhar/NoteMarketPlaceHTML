@@ -1,0 +1,1185 @@
+/* =========================================
+                Html, Body
+============================================ */
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    height: max-content;
+    color: #333333;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: "OpenSans" ;
+}
+
+p{
+    font-family: "OpenSans";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+}
+section {
+    overflow: hidden;
+}
+/* =========================================
+                Content Boxes
+============================================ */
+
+.content-box-lg {
+    padding: 120px 60px;
+}
+
+.content-box-md {
+    padding: 60px 0;
+}
+
+.content-box-sm {
+    padding: 50px 0;
+}
+
+/* =========================================
+                Home
+============================================ */
+#home-01 {
+    background: url("../images/login-bg-with-overlay\ \(2\).jpg") no-repeat  center;
+    height: 620px;
+    background-size: cover;
+    z-index: -1; 
+}
+#home-content {
+    margin-top: 200px;
+    padding-left: 55px;
+}
+
+#home-text p {
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 400;
+    font-family: "Open Sans";
+    line-height: 30px;
+}
+#home-01 .content-box-lg {
+    padding:  0px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+#pera-1{
+   margin: 0px 0px 50px 0px;
+   padding: 0px;
+}
+
+#home-03{
+  padding-top: 60px;
+  padding-bottom: 0px; 
+  background-color: #f9f9f9;  
+}
+.work-image{
+    text-align: center;
+    display: inline-flex;
+    background-color: white;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08); 
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08); 
+}
+.work-image img{
+   margin: auto;
+   width: 40px;
+   height: 40px; 
+}
+.home-03-info h3{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-family: "Open Sans";
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    color: #6255a5;
+}
+#home-3-2{
+    width: 150px;
+}
+.work-btn{
+    margin-bottom: 60px;
+}
+
+.author img{
+    width: 100px;
+    height: 100px;
+    padding-right: 10px;
+}
+.author .author-name-des h4{   
+    font-family: "Open Sans";
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+    color: #6255a5;
+    margin: 0;
+}
+.author .author-name-des p {
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #333333;
+    margin: 0px;
+}
+.customber-pera{
+    padding-top: 10px;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 28px;
+    color: #333333;
+    margin: 0px;
+}
+.author .author-name-des{
+    padding-left: 20px;
+} 
+.customber{
+    width: 705px;
+    height: 278px;
+    padding: 40px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.08);
+}
+#customber-01{
+    margin-bottom: 30px;
+}
+.customber-1-1{
+    position :relative;
+    left: -15px;
+}
+.customber-1-2{
+    position :relative;
+    right: -15px;
+}
+
+/* =========================================
+                Search Page
+============================================ */
+.banner-background{
+    background: url("../images/login-bg-with-overlay\ \(2\).jpg") no-repeat center;
+    height: 250px;
+    background-size: cover;
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+.info h2{
+    padding: 98px 0px;
+    margin: 0px;
+}
+
+/* section home-1-1-2*/
+.search{
+    
+    height: 165px;
+    background-color: #f9f9f9;
+    padding: 30px;
+}
+
+.has-search .form-control{
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid #d1d1d1;
+    padding-left: 2.375rem;
+}
+.has-search .form-control-feedback{
+    position: absolute;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #8a8a8a;
+    top: 0px;
+}
+.first-component{
+    margin-top: 0px;
+}
+
+.select{
+    height: 50px;
+    border-radius: 3px;
+    border: 1px solid #d1d1d1;
+    margin-right: 20px;
+}
+.dropdown-section{
+    padding: 0px 14px;
+}
+
+.form-control{
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #8a8a8a;
+}
+/* search note section*/
+.notes-img{
+    width: 350px;
+    height: 223px;
+    border: 1px solid #d1d1d1;
+}
+.colum-1{
+    padding-right: 50px;
+}
+
+
+.colum-1 h3{
+    font-family: "Open Sans";
+    font-size: 19px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #6255a5;
+    margin-left: 20px;
+    margin-top: 30px;
+}
+.colum-1 .flag{
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #df3434;
+}
+
+.content-notes{
+    width: 350px;
+    height: 300px;
+    border: 1px solid #d1d1d1;
+}
+
+ul.package {
+    list-style: none;
+    padding: 20px 0;
+    height: 20px;
+}
+
+ul.package li {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+}
+ul.package li img{
+    margin-bottom: 15px;
+    margin-left: 20px;
+    display: inline-flex;
+}
+
+#first-row{
+    margin-bottom: 30px;
+}
+
+#second-row{
+    margin-bottom: 30px; 
+}
+
+/*rating bar*/
+.star-rating{
+   margin-top: 100px;
+   margin-left: -120px;
+}
+
+#star-description{
+  display:inline-block;
+  font-family: "Open Sans";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #333333;
+  margin-top: 0px;
+}
+.stars {
+    font-size: 20px;
+    margin: 0px 0 10px 0;
+    display: flex;
+    color: #ffc700;
+    margin-bottom: 0px;
+}
+.rating-star-search{
+    position: relative;
+    left: 140px;
+    top: 25px;
+}
+.rating-star{
+    position: relative;
+    left: 160px;
+}
+.empty-star{
+    color: #d1d1d1;
+}
+/*pagination*/
+ul.pagination li a{
+    border-radius: 50%;
+    border-color: #ffffff;
+    color: #333333;
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+}
+ul.pagination li img{
+    width: 8px;
+    height: 15px;
+    color: #333333;
+    position: relative;
+    top: 4px;
+}
+
+.page-item.active .page-link {
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    width: 34px;
+    height: 34px;
+    color: #ffffff;
+    background-color: #6255a5;
+    border-color: #6255a5;
+}
+ul.pagination{
+    margin: 0px;
+}
+.pagelist{
+    margin-bottom: 50px;
+}
+
+/* =========================================
+                Notes Detail
+============================================ */
+.notes-heading-1 h3{
+    margin-top: 0px;
+}
+
+.notes-01{
+    margin-top: 60px;
+}
+
+.type h2{
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.note-description p{
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333333;
+    margin-bottom: 30px;
+}
+.note-img img{
+    height: 300px;
+    width: 240px;
+}
+#note-name h2{
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.notes-detail-left h4{
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 36px;
+    color: #333333;
+}
+
+.notes-detail-right h4{
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 36px;
+    color: #6255a5;
+}
+
+.flag{
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #df3434;
+}
+
+#pdf-demo{
+    border:1px solid #d1d1d1;
+    border-radius: 3px;
+    height: 450px;
+}
+#pdf-demo iframe{
+    width: 538px; 
+    height : 448px;
+}
+
+#customber-review{
+    border:1px solid #d1d1d1;
+    border-radius: 3px;
+    height: 450px;
+    overflow: scroll;
+}
+
+.customber-reviewr-part{
+    padding: 30px;
+}
+
+.customber-reviewr-part h4{
+    margin: 0px;
+}
+
+.review-description p{
+    margin-bottom: 0px;
+    margin-top: 5px;
+}
+
+.delete-img{
+    position: relative;
+    top: -20px;
+    left: 260px;
+}
+
+/*Model*/
+.heading{
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #333333;  
+}
+
+#head i{
+    width: 64px;
+    height: 64px;
+    font-size: 64px;
+    color: #6255a5;
+    margin-bottom: 15px;
+}
+
+#head-2{
+    font-family: "Open Sans";
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+    color: #6255a5;
+    margin-bottom: 20px;
+}
+
+#last{
+    margin-bottom: 0px;
+}
+
+#model-content{
+    margin: 50px 20px 30px 20px;
+}
+
+#contect-pera{
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+/* =========================================
+            Add Notes Detail page
+============================================ */
+.titles{
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #333333;
+}
+.form-control{
+    height: 50px;
+}
+.input-flid{
+    margin-bottom: 30px;
+}
+.input-flid #description{
+    height: 153px;
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+}
+.Add-notes{
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+.note-preview{
+    height: 135px;
+}
+.form-check-input-1{
+    width: 38px;
+    height: 38px;
+}
+#sell-price{
+    margin-top: 10px;
+}
+#home-add-notes a{
+    width: 150px;
+    height: 30px;
+    margin-right: 20px;
+}
+.upload-notes{
+    position: relative;
+    top: -100px;
+    left: 250px;
+}
+/* =========================================
+            FAQ Page
+============================================ */
+.card {
+    margin-bottom: 20px;
+    border: none;
+}
+
+.card-header {
+    padding: 5px 0 0 0;
+    height: 50px;
+    border-bottom: none;
+}
+
+.card-header h6 {
+    font-family: "Open Sans";
+    float: left;
+    color: #333333;
+    display: inline;
+    font-size: 18px;
+    line-height: 22px;
+    font-weight: 400;
+    padding: 8px 20px 10px 20px;
+}
+
+.card-header a {
+    padding: 0 20px;
+}
+
+.card-header a.btn {
+    float: right;
+    display: inline;
+}
+
+.card-header a img {
+    padding: 10px;
+    width: 38px;
+    height: 38px;
+}
+
+.card-body {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.card-body p {
+    color: #333333;
+    font-family: "Open Sans";
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+}
+/* =========================================
+                Headings & Peragraph
+============================================ */
+.home-banner-heading h2 {
+    font-family: "Open Sans";
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 50px;
+    line-height: 54px;
+}
+.heading-01 h2{
+    font-family: "Open Sans";
+    font-size: 34px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #6255a5;
+    margin-bottom: 30px;
+}
+
+.home-pera p {
+    font-size: 18px;
+    color: #333333;
+    font-weight: 400;
+    font-family: "Open Sans";
+    line-height: 22px;
+}
+
+/* =========================================
+                Buttons
+============================================ */
+.btn-general {
+    font-family: "Open Sans";
+    border-radius: 3px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0px;
+    padding: 0px;
+    width: 172px;
+    height: 30px;
+}
+.btn-general:hover,
+.btn-admin:hover,
+.notes-btn:hover,
+.login-btn:hover{
+    color: #d1d1d1;
+}
+.btn-home{
+    width: 172px;
+    height: 30px;
+    color: #fff;
+    border: 1px solid #fff;
+}
+.btn-home-03{
+    background-color: #6255a5;
+    color: #fff;
+}
+
+.btn-admin{
+    font-family: "Open Sans";
+    border-radius: 3px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 0px;
+    padding: 5px;
+    height: 40px;
+    width: 145px;
+}
+.btn-notes-under-preview{
+    font-family: "Open Sans";
+    border-radius: 3px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 600;
+    line-height: 22px;
+    color: #fff;
+    width: 112px;
+}
+
+.btn-approve{
+    background-color: #28a745;
+    color: #ffffff;
+}
+.btn-reject{
+    background-color: #FF3636;
+}
+.btn-inreview{
+    background-color: #cccccc;
+}
+/*footer*/
+.footer-text{
+    font-size: 14px;
+    color: #333333;
+    font-weight: 400;
+    font-family: "Open Sans";
+    line-height: 18px;
+}
+/* =========================================
+                Navigation
+============================================ */
+.navbar {
+    padding: 10px 0;
+    -webkit-transition: all 300ms linear;
+    transition: all 300ms linear;
+}
+
+.nav-item{
+    padding: 0 14px;
+    width: max-content;
+    -webkit-transition: all .8s ease-in-out;
+    transition: all .8s ease-in-out;
+}
+ul.navbar-nav>li>a {
+    font-family: "Open sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: center;
+    padding: 3px;
+    color: #fff;
+}
+ul.navbar-nav>li:last-child{
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    transition:  all .5s;
+    height: 30px;
+}
+ul.navbar-nav>li:last-child a{
+    color: #6255a5;
+    min-width: 55px;
+    -webkit-transition: all .5s;
+    transition:  all .5s;
+    text-align: center;
+}
+
+ul.navbar-nav>li>a:focus,
+ul.navbar-nav>li>a:active{
+    border-bottom: solid #fff;
+    border-width: 3px;
+    -webkit-transition: all .3s;
+    transition:  all .3s;
+    height: 30px;
+}
+
+/* White Navigation */
+
+.white-nav-top {
+    background: #fff;
+    padding: 10px 0;
+    -webkit-box-shadow: 0 8px 6px -9px #999;
+    box-shadow: 0 8px 6px -9px #999;
+    z-index: 2;
+}
+.white-nav-top ul.navbar-nav>li>a {
+    font-family: "Open sans";
+    font-weight: 600;
+    text-align: center;
+    padding: 3px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #333333;
+}
+.white-nav-top ul.navbar-nav>li:last-child{
+    background: #6255a5;
+    border: 1px solid #6255a5;
+    border-radius: 3px;
+    -webkit-transition: all .1s;
+    transition:  all .1s;
+    height: 30px;
+}
+.white-nav-top ul.navbar-nav>li:last-child a{
+    color: #fff;
+}
+.white-nav-top ul.navbar-nav>li>a:focus ,
+.white-nav-top ul.navbar-nav>li>a.active {
+    color: #6255a5;
+    border-bottom: solid #6255a5;
+    border-width: 3px;
+    -webkit-transition: all .3s;
+    transition:  all .3s;
+}
+.nav-item>a>img{
+    width: 40px;
+    height: 40px;
+    position: relative;
+    top: -10px;
+    left: -5px;
+}
+li.nav-item{
+    padding: 0px 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+#navbarDropdoenMenuLink{
+    background-color: #ffffff;
+    width: max-content;
+    height: 30px;
+}
+#navbarDropdoenMenuLinkforreports{
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333333;
+    background-color: #ffffff;
+    position: relative;
+    top: -3px;
+}
+nav .dropdown-menu,
+.dropleft .dropdown-menu{
+    border: none;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.15);
+}
+.logout-link{
+    font-weight: 600;
+    color: #6255a5;
+}
+.white-nav-top ul.navbar-nav>li>a.dropdown:hover,
+.white-nav-top ul.navbar-nav>li.dropdown>a:hover{
+    border: none;
+    border-bottom: 0px solid #ffffff;
+    border-width: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px ;
+    border-radius: 0px;
+}
+.admin-profile{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.dropdown-item:hover{
+    color: #ffffff;
+    background-color: #6255a5;
+}
+/* =========================================
+                Social Icons
+============================================ */
+
+ul.social-list {
+    padding: 0;
+    margin: 0px;
+}
+
+ul.social-list li {
+    display: inline-block;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+ul.social-list li a {
+    border: 1px solid #6255a5;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    line-height: 35px;
+    color: #ffffff;
+    background-color: #6255a5;
+    border-radius: 50%;
+    -webkit-transition: all 400ms linear;
+    transition: all 400ms linear;
+}
+
+ul.social-list li a i{
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+/* =========================================
+                Login Page
+============================================ */
+.home-bg-image {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    min-height:100%;
+    width: auto;
+    height: 900px;
+    z-index: -1;
+    background: url("../images/login-bg-with-overlay\ \(1\).jpg") no-repeat;
+    background-size: cover;
+}
+.home-bg-image-signup {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    min-width: 100%;
+    min-height:100%;
+    width: auto;
+    height: 1400px;
+    z-index: -1;
+    background: url("../images/login-bg-with-overlay\ \(1\).jpg") no-repeat;
+    background-size: cover;
+}
+.login-img{
+  margin-bottom: 15px;
+  margin-left: 120px;
+}
+.field-icon{
+    float: right;
+    margin-top: -35px;
+    margin-right: 25px;
+    color: #8a8a8a;
+}
+.login-form{
+    margin-top: 200px;
+}
+.login-form-signup{
+    margin-top: 450px;
+}
+.form-container{
+    background: #fff;
+    padding: 40px;
+    border-radius: 3px;
+    z-index: 3;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+.login-1{
+    margin-bottom: 25px;
+}
+.InputEmail1{
+    border: 1px solid #6255a5;
+    color: #333333
+}
+#InputPassword1{
+    border: 1px solid #ff5e5e;
+}
+#forgot-pass{
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #6255a5;
+    margin-left: 200px;
+}
+#password-error {
+    font-family: "Open Sans";
+    /* font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;*/
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #FF3636;
+   /* margin: 0px;*/
+}
+.field-validation-error{
+    color: #FF3636;
+}
+.input-validation-error {
+    border: 1px solid #FF3636;
+}
+.login-pera {
+    font-family: "Open Sans";
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #333333;
+    margin: 0px;
+}
+.email-flid{
+    margin-bottom: 20px;
+}
+.pass-flid{
+    margin-bottom: 20px;
+}
+#pass-flid img{
+    position: relative;
+    left: 440px;
+    top: -31px;
+}
+#Check1{
+    border: 1px solid #d1d1d1;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+}
+.login-btn{
+    color: #fff;
+    background-color: #6255a5;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: "Open Sans";
+    border-radius: 3px;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+#login-end{
+    margin-top: 20px;
+}
+/*sign up*/
+#signup-pera {
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(25, 189, 25);
+}
+/* =========================================
+            Email-verification Page
+============================================ */
+#email-verification{
+    padding: 30px;
+}
+#logo img{
+    margin-bottom: 50px;
+}
+#email-content{
+    margin-bottom: 20px;
+}
+#email-description{
+    margin-bottom: 50px;
+}
+#email-btn{
+    width: 540px;
+    height: 50px;
+    color: #fff;
+    background-color: #6255a5;
+    font-size: 18px;
+    line-height: 22px;
+    font-family: "Open Sans";
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+/* =========================================
+                Dash Board Page
+============================================ */
+.dashboard-heading{
+    font-family: "Open Sans";
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 34px;
+    color: #6255a5;
+}
+.tb-col{
+    width: 235px;
+    height: 130px;
+}
+.tb-col-right{
+    width: 140px;
+    height: 130px;
+}
+.tb-div{
+    padding: 0px;
+}
+.tb-div p{
+    font-family: "Open Sans";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+}
+.titles th,
+th>a{
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #333333;
+}
+#Dashboard-btn{
+    margin-top: 30px;
+}
+.table-data tr>td{
+    font-family: "Open Sans";
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #333333;
+    height: 50px;
+}
+.table-data tr>td>a>img{
+    margin-right: 4px;
+}
+.table-data tr>td>a{
+    color: #6255a5;
+}
+.table-data-2{
+    -webkit-box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+}
+.dashboard-pagination{
+    position: relative;
+    top: 30px;
+    margin-bottom: 60px;
+}
+.dashboard{
+    margin-top: 120px;
+}
+.table{
+    border: 1px solid #d1d1d1;
+    border-radius: 3px;
+    color: #333333;
+}
+.buyerrequest{
+    margin-top: 120px;
+}
+.Buyer-btn{
+    position: relative;
+    left: 85px;
+}
+/* =========================================
+            Admin Dash Board Page
+============================================ */
+.dash-search .form-control{
+    height: 40px;
+    border-radius: 3px;
+    border: 1px solid #d1d1d1;
+    padding-left: 2.375rem;
+}
+.dash-search .form-control-feedback{
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #8a8a8a;
+}
+#searchbar{
+    position: relative;
+    top: 30px;
+    left: 15px;
+}
+.admin-dropdown{
+    width: 140px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+.admindashboard-dropdown{
+    position: relative;
+    left: 15px;
+    width: 130px;
+}
+.phone{
+    padding-right: 0px;
+}
+.add-administrator{
+    width: 230px;
+}
+#notes-review-search{
+    margin-top: 30px;
+}
+#notes-review-btn{
+    margin-top: 30px;
+}
+.manage{
+    position: relative;
+    left: 150px;
+}
+.members-table{
+    width: 1300px;
+}
+/*member details page*/
+.member-detail-left h4{
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    color: #333333;
+}
+.member-detail-right h4{
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 26px;
+    color: #6255a5;
+}
+.vl{
+    border-left: 3px solid #d1d1d1;
+    height: 170px;
+    margin-top: 10px;
+}
+.member-right{
+    padding-left: 70px;
+}
+#member{
+    margin-top: 120px;
+}
+.review-table{
+    width: 1300px;
+}
+.review a{
+    color: #ffffff !important;
+}
+.default-text{
+    color: #333333;
+}

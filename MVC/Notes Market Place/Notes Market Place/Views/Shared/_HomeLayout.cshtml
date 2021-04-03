@@ -1,0 +1,186 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <title>@ViewBag.Title</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!--Font Awsome-->
+    <link rel="stylesheet" href="~/Content/css/font-awesome/css/font-awesome.min.css" />
+
+    @Styles.Render("~/Content/css")
+
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg  bg-white white-nav-top fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="Home Page.html"><img src="~/Content/images/logo.png" alt="logo"></a>
+                <button class="navbar-toggler collapsed col-2" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarsExampleDefault" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="mobile-nav-close-btn">&times;</span>
+                    <span class="mobile-nav-open-btn">&#9776;</span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        @*<li class="nav-item">
+                                <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
+                            </li>*@
+                        @*<li class="nav-item">
+                                <a class="nav-link titles" href="">Sell Your Notes</a>
+                            </li>*@
+                        @*<li class="nav-item">
+                                <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
+                            </li>*@
+                        @if ( User.Identity.IsAuthenticated@*Session["ID"] != null*@)
+                        {
+                            @*<li class="nav-item">
+                                    <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link titles" href="@Url.Action("DashBoard","Notes",new {id= Session["ID"] })">Sell Your Notes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
+                                </li>*@
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="@Url.Action("DashBoard","Notes"@*,new {id= Session["ID"] }*@)">Sell Your Notes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                @*@Html.ActionLink("Contect Us", "Contact", new { @class = "nav-link  titles", id = 1 })*@
+                                <a class="nav-link titles" href="@Url.Action("Contact","Home")">Contect Us</a>
+                            </li>
+                            <li class="nav-item dropdown admin-profile">
+                                <a class="nav-link dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/reviewer-1.png" alt="customer-image"></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                    <a href="~/Content/Front Pages/Usre Profile.html" class="dropdown-item">My Profile</a>
+                                    <a href="~/Content/Front Pages/My Downloads.html" class="dropdown-item">My Downloads</a>
+                                    <a href="MySold Notes.html" class="dropdown-item">My Sold Notes</a>
+                                    <a href="My Rejected Notes.html" class="dropdown-item">My Rejected Notes</a>
+                                    <a href="~/Login/Changepass" class="dropdown-item">Change Password</a>
+                                    <a href="#myModal" class="dropdown-item logout-link"  target="publish"
+                                   role="button" data-toggle="modal">LOGOUT</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Logout","Logout","Login","", new { @class = "nav-link" })
+                                @*<a class="nav-link titles" href="@Url.Action("Logout","Logout",new { Model.ID })">Logout</a>*@
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="~/Login/Index">Sell Your Notes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
+                            </li>
+                            <li class="nav-item">
+                                @*@Html.ActionLink("Contect Us", "Contact", new { @class = "nav-link  titles", id = 1 })*@
+                                <a class="nav-link titles" href="~/Home/Contact">Contect Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="~/Login/Index">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    @RenderBody()
+    <hr />
+    <!--Footer-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-6 text-left">
+                    <p class="footer-text">
+                        Copyright &copy; Tatvasoft All Rights Reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-6 text-right">
+                    <ul class="social-list">
+                        <li>
+                            <a href="Admin pages/Manage System Configuration.html"><i class="fa fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="Admin pages/Manage System Configuration.html"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="Admin pages/Manage System Configuration.html"><i class="fa fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                    </button>
+                </div>
+                <div id="model-content">
+                    <div class="note-description">
+                        <p>
+                            “Are You Sure You Wnat TO Logout ?”
+                        </p>
+                    </div>
+                    <div class="col-md-12 review text-right">
+                        <a class="btn btn-notes-under-preview btn-home-03" href="~/Login/Logout" target="save" role="button">Yes</a>
+                        <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">No</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+    <!--Footer Ends-->
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    @Scripts.Render("~/bundles/popperscript")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/script")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                </button>
+            </div>
+            <div id="model-content">
+                <div class="note-description">
+                    <p>
+                        “Are you sure you want to download this Paid note. Please confirm.”
+                    </p>
+                </div>
+                <div class="col-md-12 review text-right">
+                    @Html.ActionLink("Yes", "PaidNote","Notes", new {id = ViewBag.id,SellingPrice = ViewBag.SellingPrice } , new { @class = "btn btn-notes-under-preview btn-home-03" })
+                    @*<a class="btn btn-notes-under-preview btn-home-03" href="@Url.Action("")" target="save" role="button">Yes</a>*@
+                    <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,236 @@
+﻿
+@{
+    ViewBag.Title = "AdminDashBoard";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-01">
+                    <h2>Dashboard</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tb-col-right text-center">
+                                <div class="tb-div">
+                                    <h3><a href="Notes Under Review.html" class="dashboard-heading">20</a></h3>
+                                    <p>Number of Notes in Review for Published</p>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tb-col-right text-center">
+                                <div class="tb-div">
+                                    <h3><a href="Downloaded Notes.html" class="dashboard-heading">103</a></h3>
+                                    <p>Number of New Notes Downloaded <br>(Last 7 days)</p>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="tb-col-right text-center">
+                                <div class="tb-div">
+                                    <h3><a href="Members page.html" class="dashboard-heading">223</a></h3>
+                                    <p>Number of New Registrations (Last 7 days)</p>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="publishnotes">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="home-03-info">
+                    <h3>Published Notes</h3>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 col-5">
+                        <div class="form-group dash-search" id="searchbar">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-3">
+                        <div id="Dashboard-btn">
+                            <a class="btn btn-admin btn-home-03" href="#" target="save" role="button">search</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-4">
+                        <select class="form-control admin-dropdown admindashboard-dropdown" id="Dashboard-btn">
+                            <option>Select month</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">TITLE</th>
+                        <th scope="col">CATEGORY</th>
+                        <th scope="col">ATTECHMENT SIZE</th>
+                        <th scope="col">SELL TYPE</th>
+                        <th scope="col">PRICE</th>
+                        <th scope="col">PUBLISHER</th>
+                        <th scope="col">PUBLISHED DATE</th>
+                        <th scope="col">NUMBER OF <br> DOWNLOADS</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="table-data text-center">
+                    <tr>
+                        <td>1.</td>
+                        <td class="text-left"><a href="#">Data Science</a></td>
+                        <td class="text-left">Science</td>
+                        <td>10 KB</td>
+                        <td>Free</td>
+                        <td>$0</td>
+                        <td class="text-left">Pritesh Panchal</td>
+                        <td>09-10-2020,10:10</td>
+                        <td>10</td>
+                        <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                <a href="" class="dropdown-item">Download Notes</a>
+                                <a href="" class="dropdown-item">View More Details</a>
+                                <a href="" class="dropdown-item">Unpublish</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="table-data-2">
+                        <td>2.</td>
+                        <td class="text-left"><a href="#">Accounts</a></td>
+                        <td class="text-left">Commerce</td>
+                        <td>23 MB</td>
+                        <td>Paid</td>
+                        <td>$22</td>
+                        <td class="text-left">Rahil Shah</td>
+                        <td>10-10-2020,12:30</td>
+                        <td>21</td>
+                        <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Content/images/dots.png" alt="view">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                <a href="" class="dropdown-item">Download Notes</a>
+                                <a href="" class="dropdown-item">View More Details</a>
+                                <a href="" class="dropdown-item">Unpublish</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td class="text-left"><a href="#">Social Studies</a></td>
+                        <td class="text-left">Social</td>
+                        <td>3 MB</td>
+                        <td>Paid</td>
+                        <td>$56</td>
+                        <td class="text-left">Anish Patel</td>
+                        <td>11-10-2020,01:00</td>
+                        <td>13</td>
+                        <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                <a href="" class="dropdown-item">Download Notes</a>
+                                <a href="" class="dropdown-item">View More Details</a>
+                                <a href="" class="dropdown-item">Unpublish</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td class="text-left"><a href="">AI</a></td>
+                        <td class="text-left">IT</td>
+                        <td>1 MB</td>
+                        <td>Free</td>
+                        <td>$0</td>
+                        <td class="text-left">Viajay Vaishnav</td>
+                        <td>12-10-2020,10:10</td>
+                        <td>34</td>
+                        <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                <a href="" class="dropdown-item">Download Notes</a>
+                                <a href="" class="dropdown-item">View More Details</a>
+                                <a href="" class="dropdown-item">Unpublish</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td class="text-left"><a href="">Lorem ipsum dolor sit</a></td>
+                        <td class="text-left">Lorem</td>
+                        <td>105 KB</td>
+                        <td>Paid</td>
+                        <td>$90</td>
+                        <td class="text-left">Mehul Patel</td>
+                        <td>13-10-2020,11:25</td>
+                        <td>9</td>
+                        <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                <a href="" class="dropdown-item">Download Notes</a>
+                                <a href="" class="dropdown-item">View More Details</a>
+                                <a href="" class="dropdown-item">Unpublish</a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <section class="dashboard-pagination">
+            <div class="pagelist">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item">
+                            <a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="left-arrow"></a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#"><img src="~/Content/images/right-arrow.png" alt="right-arrow"></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+</section>
+
