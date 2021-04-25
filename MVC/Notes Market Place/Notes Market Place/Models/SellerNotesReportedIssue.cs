@@ -11,13 +11,17 @@ namespace Notes_Market_Place.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class SellerNotesReportedIssue
     {
         public int ID { get; set; }
         public int NoteID { get; set; }
         public int ReviewByID { get; set; }
         public int AgainstDownloadsID { get; set; }
+
+
+        [Required(ErrorMessage = "This is the Required Fild")]
         public string Remarks { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }

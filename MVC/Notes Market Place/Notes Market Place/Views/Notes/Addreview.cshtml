@@ -1,0 +1,67 @@
+﻿@model Notes_Market_Place.Models.SellerNotesReview
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Addreview", "Notes", new { id = ViewBag.id }, FormMethod.Post))
+{
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                    </button>
+                </div>
+                <div id="model-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="home-03-info">
+                                <h3>@ViewBag.title</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+
+                            <div class="rate">
+                                @*<input type="radio" id="star5" name="rate" value="5" />*@
+                                @Html.RadioButtonFor(model => model.Ratings, "5", new { id = "star5-"+ ViewBag.id, name = "rate" })
+                                <label for="star5" title="text">5 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "4", new { id = "star4-" + ViewBag.id, name = "rate" })
+                                @*<input type="radio" id="star4" name="rate" value="4" />*@
+                                <label for="star4" title="text">4 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "3", new { id = "star3-"+ ViewBag.id, name = "rate" })
+                                @*<input type="radio" id="star3" name="rate" value="3" />*@
+                                <label for="star3" title="text">3 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "2", new { id = "star2-"+ ViewBag.id, name = "rate" })
+                                @*<input type="radio" id="star2" name="rate" value="2" />*@
+                                <label for="star2" title="text">2 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "1", new { id = "star1-"+ ViewBag.id, name = "rate" })
+                                @*<input type="radio" id="star1" name="rate" value="1" />*@
+                                <label for="star1" title="text">1 star</label>
+                            </div>
+                            @*<div class="stars">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star empty-star"></i>
+                                </div>*@
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group input-flid">
+                                <label for="description" class="titles">Comments *</label>
+                                @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", @placeholder = "Comments...", @rows = 4 })
+                                @Html.ValidationMessageFor(model => model.Comments)
+                                @*<textarea class="form-control" rows="4" placeholder="Comments..."></textarea>*@
+                            </div>
+                        </div>
+                        <div class="col-md-12 review">
+                            @*<a class="btn btn-admin btn-home-03" href="#" target="save" role="button">Submit</a>*@
+                            <input type="submit" class="btn btn-admin btn-home-03" value="submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

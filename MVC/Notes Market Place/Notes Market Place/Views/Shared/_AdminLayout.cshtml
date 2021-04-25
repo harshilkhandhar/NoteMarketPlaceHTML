@@ -38,52 +38,56 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link titles active" href="DashBoardAdimin.html">Dashboard</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">Notes</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
-                                <a href="Notes Under Review.html" class="dropdown-item">Notes Under Review</a>
-                                <a href="Published Notes.html" class="dropdown-item">Published Notes</a>
-                                <a href="Downloaded Notes.html" class="dropdown-item">Download Notes</a>
-                                <a href="Rejected Notes.html" class="dropdown-item">Rejected Notes</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link titles" href="Members Details.html">Members</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">Reports</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
-                                <a href="Spam Report.html" class="dropdown-item">Spam Reports</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false">Settings</a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
-                                <a href="Manage System Configuration.html" class="dropdown-item">Manage System Configuration</a>
-                                <a href="Manage Administrator.html" class="dropdown-item">Manage Administrator</a>
-                                <a href="Manage Category.html" class="dropdown-item">Manage Category</a>
-                                <a href="Manage Type.html" class="dropdown-item">Manage Type</a>
-                                <a href="Manage Country.html" class="dropdown-item">Manage Countries</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown admin-profile">
-                            <a class="nav-link" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
-                               aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/reviewer-1.png" alt="customer-image"></a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
-                                <a href="My Profile.html" class="dropdown-item">Update Profile</a>
-                                <a href="../Front Pages/Change Password.html" class="dropdown-item">Change Password</a>
-                                <a href="../Front Pages/Login.html" class="dropdown-item logout-link">LOGOUT</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link titles" href="../Front Pages/Login.html">Logout</a>
-                        </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link titles active" href="~/AdminDashBoard/AdminDashBoard">Dashboard</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Notes</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                                    <a href="~/AdminDashBoard/NotesUnderReview" class="dropdown-item">Notes Under Review</a>
+                                    <a href="~/AdminDashBoard/PublishedNotes" class="dropdown-item">Published Notes</a>
+                                    <a href="~/AdminDashBoard/DownloadNotes" class="dropdown-item">Download Notes</a>
+                                    <a href="~/AdminDashBoard/RejectedNotes" class="dropdown-item">Rejected Notes</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link titles" href="Members Details.html">Members</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Reports</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                                    <a href="Spam Report.html" class="dropdown-item">Spam Reports</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="#" id="navbarDropdoenMenuLinkforreports" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">Settings</a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLinkforreports">
+                                    <a href="Manage System Configuration.html" class="dropdown-item">Manage System Configuration</a>
+                                    <a href="~/Admin/ManageAdministrator" class="dropdown-item">Manage Administrator</a>
+                                    <a href="~/Admin/ManageCategory" class="dropdown-item">Manage Category</a>
+                                    <a href="~/Admin/ManageType" class="dropdown-item">Manage Type</a>
+                                    <a href="~/Admin/ManageCountry" class="dropdown-item">Manage Countries</a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown admin-profile">
+                                <a class="nav-link" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/reviewer-1.png" alt="customer-image"></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                    <a href="My Profile.html" class="dropdown-item">Update Profile</a>
+                                    <a href="~/Login/Changepass" class="dropdown-item">Change Password</a>
+                                    <a href="#myModal" class="dropdown-item logout-link"
+                                       role="button" data-toggle="modal">LOGOUT</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Logout", "Logout", "Login", "", new { @class = "nav-link" })
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -110,6 +114,35 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                        </button>
+                    </div>
+                    <div id="model-content">
+                        <div class="note-description">
+                            <p>
+                                “Are You Sure You Wnat TO Logout ?”
+                            </p>
+                        </div>
+                        <div class="col-md-12 review text-right">
+                            <a class="btn btn-notes-under-preview btn-home-03" href="~/Login/Logout" target="save" role="button">Yes</a>
+                            <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">No</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Footer Ends-->
     @Scripts.Render("~/bundles/jquery")
     <script src="~/Scripts/jquery.validate.min.js"></script>

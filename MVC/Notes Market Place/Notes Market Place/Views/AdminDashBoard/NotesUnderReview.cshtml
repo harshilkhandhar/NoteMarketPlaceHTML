@@ -1,0 +1,224 @@
+﻿
+@model IEnumerable<Notes_Market_Place.Models.SellerNote>
+
+@{
+    ViewBag.Title = "NotesUnderReview";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="dashboard">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-01">
+                    <h2>Notes Under Review</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="" class="titles">Seller</label>
+                <select class="form-control form-control-md select admin-dropdown default-text" value="Khayati">
+                    <option>Khayati</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-8">
+                        <div class="form-group dash-search" id="dashboard-btn">
+                            <span class="fa fa-search form-control-feedback"></span>
+                            @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search", @style = "margin-top:30px;" })
+                            @*<input type="text" class="form-control" placeholder="Search">*@
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-4">
+                        <div id="dashboard-btn">
+                            <input class="btn btn-admin btn-home-03" type="submit" value="search" name="Search" style="margin-top:30px;">
+                            @*<a class="btn btn-admin btn-home-03" href="#" target="save" role="button">search</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row table-responsive">
+            <table class="table review-table">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">
+                            @*NOTE TITLE*@
+                            @Html.ActionLink("NOTE TITLE", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @*CATEGORY*@
+                            @Html.ActionLink("CATEGORY", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @*SELLER*@
+                            @Html.ActionLink("SELLER", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col"></th>
+                        <th scope="col">
+                            @*DATE ADDED*@
+                            @Html.ActionLink("DATE ADDED", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @*STATUS*@
+                            @Html.ActionLink("STATUS", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "STATUS", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col" class="text-center">ACTION</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @if (ViewBag.Message != null)
+                {
+                    <tr class="text-center"><td colspan="10">@ViewBag.Message</td></tr>
+                }
+            <tbody class="table-data text-center">
+                @{var srno = (ViewBag.PageNumber - 1) * 10; }
+                @foreach (var item in Model)
+                {
+                    srno = srno + 1;
+                    if (item.Status == 7 || item.Status == 8)
+                    {
+                        <tr>
+                            <td>@srno</td>
+                            <td class="text-left"><a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })">@item.Title</a></td>
+                            <td class="text-left">@item.NoteCategory.Name</td>
+                            <td class="text-left">@item.User.FirstName @item.User.LastName</td>
+                            <td><a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })"><img src="~/Content/images/eye.png" alt="eye-image"></a></td>
+                            <td>@item.CreatedDate.Value.ToString("dd MMM yyyy,hh:mm")@*09-10-2020,10:10*@</td>
+                            <td class="text-left">@item.ReferenceData.value@*InReview*@</td>
+                            <td class="text-left review">
+                                <a class="btn btn-notes-under-preview btn-approve" href="#" target="save" role="button">Approve</a>
+                                <a class="btn btn-notes-under-preview btn-reject" href="#myModal1-@item.ID" target="save" role="button"
+                                   data-toggle="modal">Reject</a>
+                                <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">InReview</a>
+
+                                <!--model-->
+                                <!-- Button trigger modal -->
+                                <!-- Modal1 -->
+                                <div class="modal fade" id="myModal1-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-body">
+                                                <div>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                                                    </button>
+                                                </div>
+                                                <div id="model-content">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="home-03-info">
+                                                                    <h3>@item.Title-@item.NoteCategory.Name</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group input-flid">
+                                                                    <label for="description" class="titles">Remarks</label>
+                                                                    @*@Html.TextAreaFor(model => model.Remarks, new { @class = "form-control", @placeholder = "Write remarks", @rows = 3 })
+                                                                    @Html.ValidationMessageFor(model => model.Remarks)*@
+                                                                    <textarea class="form-control" id="description" rows="3" placeholder="Write remarks"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 review text-right">
+                                                                <a class="btn btn-notes-under-preview btn-reject" href="#" target="save" role="button">Reject</a>
+                                                                <button class="btn btn-notes-under-preview btn-inreview" data-dismiss="modal">Cancle</button>
+                                                                @*<a class="btn btn-notes-under-preview btn-inreview" role="button">Cancel</a>*@
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="dropleft">
+                                <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                    <a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })" class="dropdown-item">View More Details</a>
+                                    <a href="@Url.Action("AdminDashBoardDownload","AdminDashBoard",new {id=item.ID})" class="dropdown-item">Download Notes</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                }
+            </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="dashboard-pagination">
+    <div class="pagelist">
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    if (ViewBag.totalpages != null)
+                    {
+                        double TotalPages = ViewBag.totalpages;
+                        if (ViewBag.PageNumber == 1)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                                @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                                @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
+                            </li>
+                        }
+                        for (int i = 1; i <= TotalPages; i++)
+                        {
+                            if (i == ViewBag.PageNumber)
+                            {
+                                <li class="page-item active ">
+                                    @Html.ActionLink(i.ToString(), "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                    @*<a class="page-link" href="#">@i</a>*@
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item ">
+                                    @Html.ActionLink(i.ToString(), "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                    @*<a class="page-link" href="#">@i</a>*@
+                                </li>
+                            }
+                        }
+                        if (ViewBag.PageNumber == TotalPages)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                                @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                                @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
+
+
+
+
+
+

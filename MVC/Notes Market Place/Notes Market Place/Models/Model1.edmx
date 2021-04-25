@@ -182,7 +182,7 @@
           <Property Name="ModifiedDate" Type="datetime" />
           <Property Name="MidifiedBy" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ActivationCode" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -749,7 +749,7 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="MidifiedBy" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="ActivationCode" Type="Guid" Nullable="false" />
+          <Property Name="ActivationCode" Type="Guid" />
           <NavigationProperty Name="Downloads" Relationship="Self.FK_Downloads_SellerNotesWithUsreTable" FromRole="User" ToRole="Downloads" />
           <NavigationProperty Name="Downloads1" Relationship="Self.FK_Downloads_UsersDownloader" FromRole="User" ToRole="Downloads" />
           <NavigationProperty Name="SellerNotes" Relationship="Self.FK_SellerNotes_Users" FromRole="User" ToRole="SellerNotes" />

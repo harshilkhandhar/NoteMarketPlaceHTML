@@ -1,4 +1,6 @@
 ﻿
+@model Notes_Market_Place.Models.NotesDetail
+
 @{
     ViewBag.Title = "NotesDeatil";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
@@ -20,9 +22,18 @@
                     <div class="row">
                         <!--left part-->
                         <div class="col-md-6 col-sm-6 col-6">
-                            <div class="note-img">
-                                <img src="@Url.Content(ViewBag.Display)" alt="computer-science book">
-                            </div>
+                            @if (ViewBag.Display != null)
+                            {
+                                <div class="note-img">
+                                    <img src="@Url.Content(ViewBag.Display)" alt="Book Preview">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="note-img">
+                                    <img src="~/Content/images/computer-science.png" alt="computer-science book">
+                                </div>
+                            }
                         </div>
                         <!--right part-->
                         <div class="col-md-6 col-sm-6 col-6">
@@ -30,34 +41,49 @@
                                 <div class="row">
                                     <div class="col-md-12 col-sm-12 col-12">
                                         <div class="heading-01" id="note-name">
-                                            <h2>@ViewBag.title@*Computer Science*@</h2>
+                                            <h2>@ViewBag.notetitle</h2>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="type">
-                                    <h2>@ViewBag.Category@*Sciences*@</h2>
+                                    <h2>@ViewBag.Category</h2>
                                 </div>
                                 <div class="note-description">
                                     <p>
                                         @ViewBag.Description
-                                        @*Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam aperiam
-                quibusdam animi amet quam repudiandae molestias, placeat!
-                animi amet quam, placeat!*@
+
                                     </p>
                                 </div>
-                                @if (ViewBag.IsPaid == false)
+                                @if (User.Identity.IsAuthenticated)
                                 {
-                                    <div id="home-btn">
-                                        <a class="btn notes-btn btn-home-03" href="@Url.Action("Download","Notes",new {id=ViewBag.id})" target="download"
-                                          >Download@*$15*@</a>
-                                    </div>
+                                    if (ViewBag.IsPaid == false)
+                                    {
+                                        <div id="home-btn">
+                                            <a class="btn notes-btn btn-home-03" href="@Url.Action("Download","Notes",new {id=ViewBag.id})" target="download">Download@*$15*@</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div id="home-btn">
+                                            <a class="btn notes-btn btn-home-03" href="#myModal1" target="download"
+                                               role="button" data-toggle="modal">Download/$@ViewBag.SellingPrice@*$15*@</a>
+                                        </div>
+                                    }
                                 }
                                 else
                                 {
-                                    <div id="home-btn">
-                                        <a class="btn notes-btn btn-home-03" href="#myModal1" target="download"
-                                           role="button" data-toggle="modal">Download/$@ViewBag.SellingPrice@*$15*@</a>
-                                    </div>
+                                    if (ViewBag.IsPaid == false)
+                                    {
+                                        <div id="home-btn">
+                                            <a class="btn notes-btn btn-home-03" href="~/Login/Index" target="download">Download@*$15*@</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div id="home-btn">
+                                            <a class="btn notes-btn btn-home-03" href="~/Login/Index">Download/$@ViewBag.SellingPrice@*$15*@</a>
+                                        </div>
+                                    }
                                 }
 
                             </div>
@@ -66,104 +92,126 @@
                 </div>
                 <!--right side-->
                 <div class="col-md-6">
-                    <div class="row">
-                        <!--right side-->
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <div class="notes-detail-left">
-                                <h4>Institution:</h4>
+                    @if (ViewBag.Institute != null)
+                    {
+                        <div class="row">
+                            <!--right side-->
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div class="notes-detail-left">
+                                    <h4>Institution:</h4>
+                                </div>
+                            </div>
+                            <!--left side-->
+                            <div class="col-md-8 col-sm-8 col-8 text-right">
+                                <div class="notes-detail-right">
+                                    <h4>@ViewBag.Institute</h4>
+                                </div>
                             </div>
                         </div>
-                        <!--left side-->
-                        <div class="col-md-8 col-sm-8 col-8 text-right">
-                            <div class="notes-detail-right">
-                                <h4>@ViewBag.Institute@*University of California*@</h4>
+                    }
+                    @if (ViewBag.Country != null)
+                    {
+                        <div class="row">
+                            <!--right side-->
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div class="notes-detail-left">
+                                    <h4>Country:</h4>
+                                </div>
+                            </div>
+                            <!--left side-->
+                            <div class="col-md-8 col-sm-8 col-8 text-right">
+                                <div class="notes-detail-right">
+                                    <h4>@ViewBag.Country</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <!--right side-->
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <div class="notes-detail-left">
-                                <h4>Country:</h4>
+                    }
+                    @if (ViewBag.Course != null)
+                    {
+                        <div class="row">
+                            <!--right side-->
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div class="notes-detail-left">
+                                    <h4>Course Name:</h4>
+                                </div>
+                            </div>
+                            <!--left side-->
+                            <div class="col-md-8 col-sm-8 col-8 text-right">
+                                <div class="notes-detail-right">
+                                    <h4>@ViewBag.Course</h4>
+                                </div>
                             </div>
                         </div>
-                        <!--left side-->
-                        <div class="col-md-8 col-sm-8 col-8 text-right">
-                            <div class="notes-detail-right">
-                                <h4>@ViewBag.Country@*United States*@</h4>
+                    }
+                    @if (ViewBag.CourseCode != null)
+                    {
+                        <div class="row">
+                            <!--right side-->
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div class="notes-detail-left">
+                                    <h4>Course Code:</h4>
+                                </div>
+                            </div>
+                            <!--left side-->
+                            <div class="col-md-8 col-sm-8 col-8 text-right">
+                                <div class="notes-detail-right">
+                                    <h4>@ViewBag.CourseCode</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <!--right side-->
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <div class="notes-detail-left">
-                                <h4>Course Name:</h4>
+                    }
+                    @if (ViewBag.Proffesor != null)
+                    {
+                        <div class="row">
+                            <!--right side-->
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div class="notes-detail-left">
+                                    <h4>Professor:</h4>
+                                </div>
+                            </div>
+                            <!--left side-->
+                            <div class="col-md-8 col-sm-8 col-8 text-right">
+                                <div class="notes-detail-right">
+                                    <h4>@ViewBag.Proffesor</h4>
+                                </div>
                             </div>
                         </div>
-                        <!--left side-->
-                        <div class="col-md-8 col-sm-8 col-8 text-right">
-                            <div class="notes-detail-right">
-                                <h4>@ViewBag.Course@*Computer Engineering*@</h4>
+                    }
+                    @if (ViewBag.NumberofPages != null)
+                    {
+                        <div class="row">
+                            <!--right side-->
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div class="notes-detail-left">
+                                    <h4>Number of Pages:</h4>
+                                </div>
+                            </div>
+                            <!--left side-->
+                            <div class="col-md-8 col-sm-8 col-8 text-right">
+                                <div class="notes-detail-right">
+                                    <h4>@ViewBag.NumberofPages</h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <!--right side-->
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <div class="notes-detail-left">
-                                <h4>Course Code:</h4>
+                    }
+                    @if (ViewBag.ApporvedDate != null)
+                    {
+                        <div class="row">
+                            <!--right side-->
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div class="notes-detail-left">
+                                    <h4>Approved Date:</h4>
+                                </div>
+                            </div>
+                            <!--left side-->
+                            <div class="col-md-8 col-sm-8 col-8 text-right">
+                                <div class="notes-detail-right">
+                                    <h4>@ViewBag.ApporvedDate@*November 25 2020*@</h4>
+                                </div>
                             </div>
                         </div>
-                        <!--left side-->
-                        <div class="col-md-8 col-sm-8 col-8 text-right">
-                            <div class="notes-detail-right">
-                                <h4>@ViewBag.CourseCode@*248705*@</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!--right side-->
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <div class="notes-detail-left">
-                                <h4>Professor:</h4>
-                            </div>
-                        </div>
-                        <!--left side-->
-                        <div class="col-md-8 col-sm-8 col-8 text-right">
-                            <div class="notes-detail-right">
-                                <h4>@ViewBag.Proffesor@*Mr.Riachand Brown*@</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!--right side-->
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <div class="notes-detail-left">
-                                <h4>Number of Pages:</h4>
-                            </div>
-                        </div>
-                        <!--left side-->
-                        <div class="col-md-8 col-sm-8 col-8 text-right">
-                            <div class="notes-detail-right">
-                                <h4>@ViewBag.NumberofPages@*277*@</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!--right side-->
-                        <div class="col-md-4 col-sm-4 col-4">
-                            <div class="notes-detail-left">
-                                <h4>Approved Date:</h4>
-                            </div>
-                        </div>
-                        <!--left side-->
-                        <div class="col-md-8 col-sm-8 col-8 text-right">
-                            <div class="notes-detail-right">
-                                <h4>@ViewBag.ApporvedDate@*November 25 2020*@</h4>
-                            </div>
-                        </div>
-                    </div>
+                    }
+
                     <div class="row">
                         <!--right side-->
                         <div class="col-md-4 col-sm-4 col-4">
@@ -175,23 +223,33 @@
                         <div class="col-md-8 col-sm-8 col-8 text-right">
                             <div class="notes-detail-right">
                                 <div class="stars rating-star">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star empty-star"></i>
-                                    <h4> 100 Reviews</h4>
+                                    @for (int i = 0; i < 5; i++)
+                                    {
+                                        if (i < ViewBag.Avgreview)
+                                        {
+                                            <i class="fa fa-star" style="margin-top:10px"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa fa-star empty-star" style="margin-top:10px"></i>
+                                        }
+                                    }
+                                    <h4>@ViewBag.TotalReview Reviews</h4>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-12">
-                            <div class="flag">
-                                5 Users marked this note as in approriate
+                    @if (ViewBag.Spam != 0)
+                    {
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-12">
+                                <div class="flag">
+                                    @ViewBag.Spam Users marked this note as in approriate
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
+
                 </div>
             </div>
             <hr>
@@ -207,9 +265,18 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="pdf-demo">
-                            <iframe src="@Url.Content(ViewBag.NotePreview)" frameborder="0"></iframe>
-                        </div>
+                        @if (ViewBag.NotePreview != null)
+                        {
+                            <div id="pdf-demo">
+                                <iframe src="@Url.Content(ViewBag.NotePreview)" frameborder="0"></iframe>
+                            </div>
+                        }
+                        else
+                        {
+                            <div id="pdf-demo">
+                                <iframe src="~/Content/images/sample.pdf" frameborder="0"></iframe>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -219,85 +286,110 @@
                 </div>
                 <div id="customber-review">
                     <div class="customber-reviewr-part">
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-2">
-                                <img src="~/Content/images/reviewer-1.png" alt="reviewer-1">
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-10">
-                                <h4>Richard Brown</h4>
-                                <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star empty-star"></i>
-                                </div>
-                                <div class="note-description review-description">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit asperiores
-                                        dolore, hic.
-                                    </p>
-                                </div>
+                        @*@ViewBag.model = Model.notereview;*@
+                      
+                        @foreach (var item in Model.notereview)
+                        {
+                            <div class="row">
+                                <div class="col-md-2 col-sm-2 col-2">
+                                    @if (item != null)
+                                    {
+                                        <img src="@Url.Content(item.TblUserProfile.ProfilePicture)" alt="reviewer-1">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/images/reviewer-1.png" alt="reviewer-1">
+                                    }
 
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-2">
-                                <img src="~/Content/images/reviewer-2.png" alt="reviewer-1">
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-10">
-                                <h4>Alice Ortiaz</h4>
-                                <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star empty-star"></i>
                                 </div>
-                                <div class="note-description review-description">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit asperiores
-                                        dolores voluptatibus enim, hic.
-                                    </p>
-                                </div>
+                                <div class="col-md-10 col-sm-10 col-10">
+                                    <h4>@item.TblUser.FirstName @item.TblUser.LastName@*Richard Brown*@</h4>
+                                    <div class="stars">
+                                        @for (var i = 0; i < 5; i++)
+                                        {
+                                            if (i < item.review.Ratings)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-star empty-star"></i>
+                                            }
+                                        }
+                                        @*<i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star empty-star"></i>*@
+                                    </div>
+                                    <div class="note-description review-description">
+                                        <p>
+                                            @item.review.Comments
+                                            @*Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit asperiores
+                                                dolore, hic.*@
+                                        </p>
+                                    </div>
 
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-2 col-sm-2 col-2">
-                                <img src="~/Content/images/reviewer-3.png" alt="reviewer-1">
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-10">
-                                <h4>Sara Passmore</h4>
-                                <div class="stars">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star empty-star"></i>
                                 </div>
-                                <div class="note-description review-description">
-                                    <p>
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit asperiores
-                                        dolores, hic.
-                                    </p>
-                                </div>
+                            </div>
+                            <hr>
+                            @*<div class="row">
+                                    <div class="col-md-2 col-sm-2 col-2">
+                                        <img src="~/Content/images/reviewer-2.png" alt="reviewer-1">
+                                    </div>
+                                    <div class="col-md-10 col-sm-10 col-10">
+                                        <h4>Alice Ortiaz</h4>
+                                        <div class="stars">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star empty-star"></i>
+                                        </div>
+                                        <div class="note-description review-description">
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit asperiores
+                                                dolores voluptatibus enim, hic.
+                                            </p>
+                                        </div>
 
-                            </div>
-                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-2 col-sm-2 col-2">
+                                        <img src="~/Content/images/reviewer-3.png" alt="reviewer-1">
+                                    </div>
+                                    <div class="col-md-10 col-sm-10 col-10">
+                                        <h4>Sara Passmore</h4>
+                                        <div class="stars">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star empty-star"></i>
+                                        </div>
+                                        <div class="note-description review-description">
+                                            <p>
+                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit asperiores
+                                                dolores, hic.
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>*@
+                        }
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Button trigger modal -->
-<!-- Modal -->
-@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body">
                 <div>
@@ -306,37 +398,24 @@
                     </button>
                 </div>
                 <div id="model-content">
-                    <div id="head" class="text-center">
-                        <i class="fa fa-check-circle"></i>
-                    </div>
-                    <h3 class="text-center" id="head-2">Thank you for purchasing</h3>
-                    <h4 class="heading">Dear Smith,</h4>
                     <div class="note-description">
                         <p>
-                            As this is paid notes-you need to pay to seller Rahil shah offline.We will send him an
-                            email that you want to download this note.He may contact you further for payment process
-                            completion.
+                            “Are you sure you want to download this Paid note. Please confirm.”
                         </p>
-
-                        <p>In case,you have urgency,<br>Please contect us on +911234567890.</p>
-
-                        <p>
-                            Once he recieves the payment and acknowldge us - selected notes you can see over my
-                            downloads tab for download.
-                        </p>
-
-                        <p id="last">Have a good day.</p>
+                    </div>
+                    <div class="col-md-12 review text-right">
+                        @Html.ActionLink("Yes", "PaidNote", "Notes", new { id = ViewBag.id, SellingPrice = ViewBag.SellingPrice }, new { @class = "btn btn-notes-under-preview btn-home-03" })
+                        @*<a class="btn btn-notes-under-preview btn-home-03" href="@Url.Action("")" target="save" role="button">Yes</a>*@
+                        <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>*@
-
-
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-     @Html.Action("PaidConformation","Notes")
+    @*@Html.Action("PaidConformation", "Notes")*@
 </div>
+
+
+
 
 

@@ -177,7 +177,7 @@
     <Property Name="ModifiedDate" Type="datetime" />
     <Property Name="MidifiedBy" Type="int" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
-    <Property Name="ActivationCode" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ActivationCode" Type="uniqueidentifier" />
   </EntityType>
   <EntityType Name="UserProfile">
     <Key>

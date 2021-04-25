@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
-    <title>Signup Password</title>
+    <title>Signup</title>
 
     <!-- Favicon-->
     <link rel="shortcut icon" href="~/Content/images/favicon.ico">
@@ -39,7 +39,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class=" col-12 col-sm-9 col-md-6">
-                        @using (Html.BeginForm("Signup", "Login", FormMethod.Post))
+                        @using (Html.BeginForm("Signup","Login", FormMethod.Post))
                         {
                             @Html.AntiForgeryToken()
                             <div class="login-form-signup">
@@ -68,8 +68,8 @@
                                         </div>*@
                                     <div class="form-group email-flid">
                                         <label for="InputFirstName" class="titles">First Name *</label>
-                                        @Html.TextBoxFor(modal => modal.FirstName, new { @class = "form-control InputEmail1", @placeholder = "Enter your First name" })
-                                        @Html.ValidationMessageFor(modal => modal.FirstName)
+                                        @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control InputEmail1", @placeholder = "Enter your First name" })
+                                        @Html.ValidationMessageFor(model => model.FirstName)
                                         @*<input type="text" class="form-control InputEmail1" value="john">*@
                                     </div>
                                     <div class="form-group email-flid">
@@ -80,14 +80,14 @@
                                     </div>
                                     <div class="form-group email-flid">
                                         <label class="titles">Email *</label>
-                                        @Html.TextBoxFor(modal => modal.EmailID, new { @class = "form-control InputEmail1", @id = "InputEmail", @placeholder = "Enter EmailID" })
-                                        @Html.ValidationMessageFor(modal => modal.EmailID)
+                                        @Html.TextBoxFor(model => model.EmailID, new { @class = "form-control InputEmail1", @id = "InputEmail", @placeholder = "Enter EmailID" })
+                                        @Html.ValidationMessageFor(model => model.EmailID)
                                         @*<input type="email" class="form-control" id="InputEmail" placeholder="Enter your email address">*@
                                     </div>
                                     <div class="form-group pass-flid">
                                         <label class="titles">Password</label>
-                                        @Html.PasswordFor(modal => modal.Password, new { @class = "form-control InputEmail1", @id = "InputSignupPassword1", @placeholder = "Enter your password" })
-                                        @Html.ValidationMessageFor(modal => modal.Password)
+                                        @Html.PasswordFor(model => model.Password, new { @class = "form-control InputEmail1", @id = "InputSignupPassword1", @placeholder = "Enter your password" })
+                                        @Html.ValidationMessageFor(model => model.Password)
                                         @*<input type="password" class="form-control" id="InputSignupPassword1" placeholder="Enter your password"
                                             name="password">*@
                                         <span toggle="#InputSignupPassword1" class="fa fa-fw fa-eye field-icon toggle-password"></span>
@@ -95,8 +95,8 @@
                                     </div>
                                     <div class="form-group" id="pass-flid">
                                         <label class="titles">Conform Password</label>
-                                        @Html.PasswordFor(modal => modal.ConformPassword, new { @class = "form-control InputEmail1", @id = "InputSignupPassword2", @placeholder = "Re-enter your password" })
-                                        @Html.ValidationMessageFor(modal => modal.ConformPassword)
+                                        @Html.PasswordFor(model => model.ConformPassword, new { @class = "form-control InputEmail1", @id = "InputSignupPassword2", @placeholder = "Re-enter your password" })
+                                        @Html.ValidationMessageFor(model => model.ConformPassword)
                                         @*<input type="password" class="form-control" id="InputSignupPassword2"
                                             placeholder="Re-enter your password" name="password">*@
                                         <span toggle="#InputSignupPassword2" class="fa fa-fw fa-eye field-icon toggle-password"></span>

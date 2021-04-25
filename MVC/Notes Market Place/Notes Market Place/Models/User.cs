@@ -30,20 +30,23 @@ namespace Notes_Market_Place.Models
         public int ID { get; set; }
         public int RoleID { get; set; }
 
-        [Required]
+        //[Required]
         public string FullName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This is Required Field")]
+        [RegularExpression("[A-za-z]*", ErrorMessage = "Invalid Name")]
         public string FirstName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This is Required Field")]
+        [RegularExpression("[A-za-z]*", ErrorMessage = "Invalid Name")]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "This is Required Field")]
         [EmailAddress]
         public string EmailID { get; set; }
 
         [Required]
-        [StringLength(8, MinimumLength = 6, ErrorMessage = "Password must be between 8 to 6 character")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{6,24}$", ErrorMessage = "Password Contain at least 1 Upper,lower,Special Character")]
+        [StringLength(24, MinimumLength = 6, ErrorMessage = "Password must be between 8 to 6 character")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
@@ -51,10 +54,10 @@ namespace Notes_Market_Place.Models
         [Compare("Password", ErrorMessage = "password Mismatch")]
         public string ConformPassword { get; set; }
 
-        [Required]
+        //[Required]
         public string Subject { get; set; }
 
-        [Required]
+        //[Required]
         public string Comments { get; set; }
 
         public bool IsEmailVerified { get; set; }
@@ -63,7 +66,7 @@ namespace Notes_Market_Place.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> MidifiedBy { get; set; }
         public bool IsActive { get; set; }
-        public System.Guid ActivationCode { get; set; }
+        public Nullable<System.Guid> ActivationCode { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Download> Downloads { get; set; }

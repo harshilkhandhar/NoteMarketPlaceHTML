@@ -33,27 +33,36 @@ namespace Notes_Market_Place.Controllers
                     User userModal = databaseContext.Users.Where(query => query.EmailID == obj.EmailID && query.Password == obj.Password).SingleOrDefault();
                     if (userModal != null)
                     {
-                        Session["ID"] = userModal.ID;
-                        if (userModal.RoleID == 1 && userModal.IsEmailVerified==true)
-                        {
-                            FormsAuthentication.SetAuthCookie(obj.EmailID, false);
-                            return RedirectToAction("Search", "Home");
-                        }
-                        else if (userModal.RoleID==2)
-                        {
-                            return RedirectToAction("AdminDashBoard", "Home");
-                        }
-                        else
-                        {
-                            ViewBag.Message = "Please Verify Your Email First.";
-                            return View();
-                        }  
+                        UserProfile profile = databaseContext.UserProfiles.Where(x => x.UserID == userModal.ID).FirstOrDefault();
+                        if (userModal.RoleID == 1 && userModal.IsEmailVerified == true /*&& profile.ID.ToString() != null*/)
+                            {
+                                FormsAuthentication.SetAuthCookie(obj.EmailID, false);
+                                if(profile != null)
+                                {
+                                    Session["Image"] = profile.ProfilePicture;
+                                    return RedirectToAction("Search", "Home");
+                                }
+                                else
+                                {
+                                    return RedirectToAction("UserProfile", "Profile");
+                                }
+                            }
+                            else if (userModal.RoleID == 2 && userModal.IsEmailVerified == true && userModal.IsActive == true)
+                            {
+                                FormsAuthentication.SetAuthCookie(obj.EmailID, false);
+                                return RedirectToAction("AdminDashBoard", "AdminDashBoard");
+                            }
+                            else
+                            {
+                                ViewBag.Message = "Please Verify Your Email First.";
+                                return View();
+                            }
                     }
                     else
                     {
                         ViewBag.Message = "Please Enter the Correct Email and Password .";
                         return View();
-                    }
+                    }      
                 } 
             }
             else
@@ -83,7 +92,7 @@ namespace Notes_Market_Place.Controllers
                     if (EmailExist != null)
                     {
                         databaseContext.Configuration.ValidateOnSaveEnabled = false;
-                        EmailExist.Password = "12345678";
+                        EmailExist.Password = "Abcd$1";
                         EmailExist.ModifiedDate = DateTime.Now;
                         databaseContext.SaveChanges();
                         SendForgotpassLinkEmail(EmailID,EmailExist.Password);
@@ -107,36 +116,34 @@ namespace Notes_Market_Place.Controllers
         { 
             var fromEmail = new MailAddress("k.harshil2000@gmail.com","Notes Market Place");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "********"; // Replace with actual password
             string subject = "New Temporary Password has been created for you";
 
-            string body = "Hello" + "<br/><br/>We have generated a new passsword for you" +
+            string body = "Hello" + "<br/><br/>We have generated a new passsword for you " +
 
-                "<br/><br/>Password:" + password + "<br/><br/>Regards,<br/>Notes MarketPlace";
+                "<br/><br/>Password: " + password + "<br/><br/>Regards,<br/>Notes MarketPlace";
 
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
-            };
-            using (var message = new MailMessage(fromEmail, toEmail)
+            //var smtp = new SmtpClient
+            //{
+            //    Host = "smtp.gmail.com",
+            //    Port = 587,
+            //    EnableSsl = true,
+            //    DeliveryMethod = SmtpDeliveryMethod.Network,
+            //    UseDefaultCredentials = false,
+            //    Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            //};
+            using (var mail = new MailMessage(fromEmail, toEmail)
             {
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
             })
-                smtp.Send(message);
+                SendMail.SendEmail(mail);
         }
 
 
         [HttpGet]
         public ActionResult Signup()
         {
-
             return View();
         }
 
@@ -145,7 +152,6 @@ namespace Notes_Market_Place.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Signup(User user)
         {
-           
             if (ModelState.IsValid)
             {
                 var isExist = IsEmailExist(user.EmailID);
@@ -162,9 +168,10 @@ namespace Notes_Market_Place.Controllers
                 {
                     databaseContext.Users.Add(user);
                         databaseContext.SaveChanges();
-                        SendVerificationLinkEmail(user.EmailID, user.ActivationCode.ToString(),user.FirstName);
+                    ViewBag.Message1 = "Your account has been successfilly created.Plase Verify your Email.";
+                    SendVerificationLinkEmail(user.EmailID, user.ActivationCode.ToString(),user.FirstName);
                 }
-                ViewBag.Message1 = "Your account has been successfilly created.Plase Verify your Email.";
+                
                 return View("Signup");
             }
             else
@@ -185,7 +192,7 @@ namespace Notes_Market_Place.Controllers
                 EmailVerified.IsEmailVerified = true;
                 databasecontext.SaveChanges();
             }
-            return RedirectToAction("EmailVerification", "Home");
+            return RedirectToAction("EmailVerification", "Home",new {email = EmailVerified.EmailID });
         }
 
 
@@ -198,29 +205,28 @@ namespace Notes_Market_Place.Controllers
 
             var fromEmail = new MailAddress("k.harshil2000@gmail.com","Notes MarketPlace");
             var toEmail = new MailAddress(emailID);
-            var fromEmailPassword = "********"; // Replace with actual password
             string subject = "Notes MarketPlace - Email Verification";
 
-            string body = "Hello, "+name+"<br/><br/>Thank you for signing up with us.Please click below link to verify your email address and to do login." +
+            string body = "Hello, "+name+"<br/><br/>Thank you for signing up with us. Please click below link to verify your email address and to do login. " +
                 
                 " <br/><br/><a href='" + link + "'>" + link + "</a> " + "<br/><br/>Regards,<br/>Notes MarketPlace";
 
-            var smtp = new SmtpClient
-            {
-                Host = "smtp.gmail.com",
-                Port = 587,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
-            };
-            using (var message = new MailMessage(fromEmail, toEmail)
+            //var smtp = new SmtpClient
+            //{
+            //    Host = "smtp.gmail.com",
+            //    Port = 587,
+            //    EnableSsl = true,
+            //    DeliveryMethod = SmtpDeliveryMethod.Network,
+            //    UseDefaultCredentials = false,
+            //    Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            //};
+            using (var mail = new MailMessage(fromEmail, toEmail)
             {
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
             })
-                smtp.Send(message);
+                SendMail.SendEmail(mail);
         }
 
 
@@ -254,6 +260,7 @@ namespace Notes_Market_Place.Controllers
                     user.ModifiedDate = DateTime.Now;
                     ViewBag.Message = "Your Password Change Sessuful.";
                     databaseContext.SaveChanges();
+                    FormsAuthentication.SignOut();
                     return RedirectToAction("Index", "Login"); 
                 }
                 else
@@ -267,8 +274,9 @@ namespace Notes_Market_Place.Controllers
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            //Session.RemoveAll();
-            //Session.Abandon();
+            Session.RemoveAll();
+            Session.Abandon();
+            //TempData.Remove("PImage");
             return RedirectToAction("Index", "Home");
         }
 

@@ -1,9 +1,10 @@
 ﻿
+@model IEnumerable<Notes_Market_Place.Models.SellerNote>
+
 @{
     ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
-
 
 <section class="banner-background">
     <div class="info text-center home-banner-heading">
@@ -11,472 +12,238 @@
     </div>
 </section>
 <section id="home-1-2">
-    <div class="Search-Notes">
-        <div class="container">
-            <div class="row first-component">
-                <div class="col-md-12 col-sm-12">
-                    <div class="home-03-info">
-                        <h3>Search and Filter Notes</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="search">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 first-component">
-                        <div class="form-group has-search">
-                            <span class="fa fa-search form-control-feedback"></span>
-                            <input type="text" class="form-control" placeholder="Search Notes here...">
+    @using (Html.BeginForm("Search", "Home", FormMethod.Post))
+    {
+        <div class="Search-Notes">
+            <div class="container">
+                <div class="row first-component">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="home-03-info">
+                            <h3>Search and Filter Notes</h3>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-2 col-sm-2 col-2 dropdown-section">
-                        <select class="form-control form-control-md">
-                            <option>Select type</option>
-                        </select>
+                <div class="search">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 first-component">
+                            <div class="form-group has-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search Notes here..."@*, onchange = "this.form.submit()"*@ })
+                                @*<input type="text" class="form-control" placeholder="Search Notes here...">*@
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-2 col-sm-2 col-2 dropdown-section">
-                        @*@Html.DropDownListFor(ViewBag.categoryname as SelectList, "Select Category", new { @class = "form-control form-control-md dropdown" })*@
-                        <select class="form-control form-control-md">
-            <option>Select category</option>
-        </select>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-2 dropdown-section">
-                        <select class="form-control form-control-md">
-                            <option>Select university</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-2 dropdown-section">
-                        <select class="form-control form-control-md">
-                            <option>Select course</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2 col-sm-2 col-2 dropdown-section">
-                        <select class="form-control form-control-md">
-                            <option>Select country</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2  col-sm-2 col-2 dropdown-section">
-                        <select class="form-control form-control-md">
-                            <option>Select rating</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-2 dropdown-section">
+                            @Html.DropDownList("Type", ViewBag.typename as SelectList, "Select Type", new { @class = "form-control form-control-md dropdown"})
+                          
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-2 dropdown-section">
+                            @Html.DropDownList("Category", ViewBag.categoryname as SelectList, "Select Category", new { @class = "form-control form-control-md dropdown" })
+                         
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-2 dropdown-section">
+                            @Html.DropDownList("University", ViewBag.university as SelectList, "Select University", new { @class = "form-control form-control-md dropdown" })
+                         
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-2 dropdown-section">
+                            @Html.DropDownList("Course", ViewBag.course as SelectList, "Select Course", new { @class = "form-control form-control-md dropdown" })
+                          
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-2 dropdown-section">
+                            @Html.DropDownList("Country", ViewBag.countryname as SelectList, "Select Country", new { @class = "form-control form-control-md dropdown" })
+                           
+                        </div>
+                        <div class="col-md-2  col-sm-2 col-2 dropdown-section">
+                            @Html.DropDownList("Rating",new SelectList(ViewBag.rating,"Value","Text"), "Select Rating", new { @class = "form-control form-control-md dropdown" })
+                            @*<select class="form-control form-control-md">
+                                <option>Select rating</option>
+                            </select>*@
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-</section>
+    }   
+    </section>
 <section id="home-1-3">
     <div class="content-box-md">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="home-03-info">
-                        <h3>Total 18 Notes</h3>
+                        <h3>Total @Model.Count() Notes</h3>
                     </div>
                 </div>
             </div>
+
             <!--first row-->
             <div class="row" id="first-row">
-                <!-- first part-->
-                <div class="col-md-4 colum-1" id="part-1">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img class="notes-img" src="~/Content/images/search1.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 ">
-                                <a href="">
-                                    <h3>Computer Operating Syatem-Final <br>Exam Book With Paper Solution</h3>
-                                </a>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp; &nbsp; Thu, Nov 26
-                                2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp; &nbsp; &nbsp;
-                                5 Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @foreach (var item in Model)
+                {
+                    if (item.Status == 9)
+                    {
+                        <!-- first part-->
+                        <div class="col-md-4 colum-1" id="part-1" style="margin-bottom:30px;">
+                            <div class="row">
+                                @if (item.DisplayPicture != null)
+                                {
+                                    <div class="col-md-12">
+                                        <img class="notes-img" src="@Url.Content(item.DisplayPicture)" alt="search note1">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="col-md-12">
+                                        <img class="notes-img" src="~/Content/images/computer-science.png" alt="search note1">
+                                    </div>
+                                }
 
-                <!-- second part-->
-                <div class="col-md-4 colum-1" id="part-2">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img class="notes-img" src="~/Content/images/search2.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <a href="Notes Detail.html">
-                                    <h3>Computer Science</h3>
-                                </a>
                             </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp;&nbsp; Thu, Nov 26 2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp;&nbsp; &nbsp; 5
-                                Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="content-notes">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 ">
+                                        <a href="@Url.Action("NotesDeatil", "Home", new {id = item.ID })">
+                                            <h3>@item.Title @*Computer Operating Syatem-Final <br>Exam Book With Paper Solution*@</h3>
+                                        </a>
+                                    </div>
+                                </div>
+                                <ul class="package">
+                                    @if (item.University != null && item.Country != null)
+                                    {
+                                        <li>
+                                            <img src="~/Content/images/university.png" alt="university image"> &nbsp; @item.University,@item.Country1.Name
+                                        </li>
+                                    }
+                                    else if (item.University != null)
+                                    {
+                                        <li>
+                                            <img src="~/Content/images/university.png" alt="university image"> &nbsp; @item.University
+                                        </li>
+                                    }
+                                    else if (item.Country != null)
+                                    {
+                                        <li>
+                                            <img src="~/Content/images/university.png" alt="university image"> &nbsp; @item.Country1.Name
+                                        </li>
+                                    }
 
-                <!-- third part-->
-                <div class="col-md-4  colum-1" id="part-3">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img class="notes-img" src="~/Content/images/search3.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12 ">
-                                <h3>Basic Computer Engineering Tech India Publication Series</h3>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp; &nbsp; Thu, Nov 26
-                                2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp;&nbsp; &nbsp; 5
-                                Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    @if (item.NumberofPages != null)
+                                    {
+                                        <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; @item.NumberofPages</li>
+                                    }
 
-            <!--second row-->
-            <div class="row" id="second-row">
-                <!-- first part-->
-                <div class="col-md-4 colum-1" id="part-1">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img class="notes-img" src="~/Content/images/search4.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Computer Operating Syatem-Final <br>Exam Book With Paper Solution</h3>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp; &nbsp; Thu, Nov 26
-                                2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp; &nbsp; &nbsp;
-                                5 Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
+                                    @if (item.CreatedDate != null)
+                                    {
+                                        <li>
+                                            <img src="~/Content/images/calendar.png" alt="calender image"> &nbsp; &nbsp;@item.CreatedDate.Value.ToString("ddd, MMM dd yyyy")
+                                        </li>
+                                    }
+                                    @{
+                                        var db = new Notes_Market_Place.Models.NotesMarketPLaceEntities();
+                                        var rating = db.SellerNotesReviews.Where(x => x.NoteID == item.ID && x.IsActive == true).Select(x => x.Ratings);
+                                        var totalreview = rating.Count();
+                                        var avgreview = totalreview > 0 ? Math.Ceiling(rating.Average()) : 0;
+                                        var spam = db.SellerNotesReportedIssues.Where(x => x.NoteID == item.ID).Count();
+                                    }
+                                    <li class="flag">
+                                        <img src="~/Content/images/flag.png" alt="university image">&nbsp; &nbsp; &nbsp;
+                                        @spam Users marked this note as in approriate
+                                    </li>
+                                </ul>
+                                <div class="star-rating">
+                                    <div class="stars rating-star-search">
 
-                    </div>
-                </div>
+                                        @for (int i = 0; i < 5; i++)
+                                        {
+                                            if (i < avgreview)
+                                            {
+                                                <i class="fa fa-star"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-star empty-star"></i>
+                                            }
+                                        }
+                                        <h3 id="star-description">@totalreview reviews</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
 
-                <!-- second part-->
-                <div class="col-md-4 colum-1" id="part-2">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <img class="notes-img" src="~/Content/images/search5.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Computer Operating Syatem-Final <br>Exam Book With Paper Solution</h3>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="images/calendar.png" alt="university image"> &nbsp;&nbsp; Thu, Nov 26 2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp;&nbsp; &nbsp; 5
-                                Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- third part-->
-                <div class="col-md-4 colum-1" id="part-3">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <img class="notes-img" src="~/Content/images/search6.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Computer Operating Syatem-Final <br>Exam Book With Paper Solution</h3>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp; &nbsp; Thu, Nov 26
-                                2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp;&nbsp; &nbsp; 5
-                                Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--thirs row-->
-            <div class="row" id="third-row">
-                <!-- first part-->
-                <div class="col-md-4 colum-1" id="part-1">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <img class="notes-img" src="~/Content/images/search1.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Computer Operating Syatem-Final <br>Exam Book With Paper Solution</h3>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp; &nbsp; Thu, Nov 26
-                                2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="flage image">&nbsp; &nbsp; &nbsp;
-                                5 Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- second part-->
-                <div class="col-md-4 colum-1" id="part-2">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <img class="notes-img" src="~/Content/images/search2.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Computer Operating Syatem-Final <br>Exam Book With Paper Solution</h3>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp;&nbsp; Thu, Nov 26 2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp;&nbsp; &nbsp; 5
-                                Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- third part-->
-                <div class="col-md-4 colum-1" id="part-3">
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                            <img class="notes-img" src="~/Content/images/search3.png" alt="search note1">
-                        </div>
-                    </div>
-                    <div class="content-notes">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h3>Basic Computer Engineering Tech India Publication Series</h3>
-                            </div>
-                        </div>
-                        <ul class="package">
-                            <li>
-                                <img src="~/Content/images/university.png" alt="university image"> &nbsp; University of
-                                California,US
-                            </li>
-                            <li><img src="~/Content/images/pages.png" alt="university image"> &nbsp; 204 Pages</li>
-                            <li>
-                                <img src="~/Content/images/calendar.png" alt="university image"> &nbsp; &nbsp; Thu, Nov 26
-                                2020
-                            </li>
-                            <li class="flag">
-                                <img src="~/Content/images/flag.png" alt="university image">&nbsp;&nbsp; &nbsp; 5
-                                Users marked this note as in approriate
-                            </li>
-                        </ul>
-                        <div class="star-rating">
-                            <div class="stars rating-star-search">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <i class="fa fa-star empty-star"></i>
-                                <h3 id="star-description">100 reviews</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>
 </section>
-<section id="home-1-4">
+
+<section class="dashboard-pagination">
     <div class="pagelist">
-        <nav aria-label="Page navigation example">
+        <nav>
             <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="left-arrow"></a>
-                </li>
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#"><img src="~/Content/images/right-arrow.png" alt="right-arrow"></a>
-                </li>
+                @{
+                    if (ViewBag.totalpages != null) 
+                    {
+                        double TotalPages = ViewBag.totalpages;
+                        if (ViewBag.PageNumber == 1)
+                        {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "Search", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                           
+                        </li>
+                        }
+                        else
+                        {
+                        <li class="page-item">
+                            @Html.ActionLink("<", "Search", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                           
+                        </li>
+                        }
+                        for (int i = 1; i <= TotalPages; i++)
+                        {
+                            if (i == ViewBag.PageNumber)
+                            {
+                            <li class="page-item active ">
+                                @Html.ActionLink(i.ToString(), "Search", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                
+                            </li>
+                            }
+                            else
+                            {
+                            <li class="page-item ">
+                                @Html.ActionLink(i.ToString(), "Search", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                               
+                            </li>
+                            }
+                        }
+                        if (ViewBag.PageNumber == TotalPages)
+                        {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "Search", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            
+                        </li>
+                        }
+                        else
+                        {
+                        <li class="page-item">
+                            @Html.ActionLink(">", "Search", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                           
+                        </li>
+                            }
+                        }
+                    }
             </ul>
         </nav>
     </div>
 </section>
 
 
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('form').change(function () {
+            $('form').submit();
+        })
+    });
+</script>

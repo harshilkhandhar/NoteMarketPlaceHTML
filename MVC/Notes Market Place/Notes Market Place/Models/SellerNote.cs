@@ -24,14 +24,17 @@ namespace Notes_Market_Place.Models
             this.SellerNotesReportedIssues = new HashSet<SellerNotesReportedIssue>();
             this.SellerNotesReviews = new HashSet<SellerNotesReview>();
         }
-
+    
         public int ID { get; set; }
         public int SellerID { get; set; }
         public int Status { get; set; }
+
+
+
         public Nullable<int> ActionBy { get; set; }
         public string AdminRemarks { get; set; }
         public Nullable<System.DateTime> PublishedDate { get; set; }
-        [Required]
+        [Required(ErrorMessage = "This is Required Field")]
         public string Title { get; set; }
 
         [Required(ErrorMessage = "Please Select the Category")]
@@ -47,7 +50,7 @@ namespace Notes_Market_Place.Models
         public Nullable<int> NoteType { get; set; }
         public Nullable<int> NumberofPages { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Description is Required Field")]
         public string Description { get; set; }
 
         public Nullable<int> Country { get; set; }
@@ -71,7 +74,9 @@ namespace Notes_Market_Place.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public Nullable<int> MidifiedBy { get; set; }
         public bool IsActive { get; set; }
-    
+
+        public IEnumerable<NotesDetail> notereview { get; set; }
+
         public virtual Country Country1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Download> Downloads { get; set; }

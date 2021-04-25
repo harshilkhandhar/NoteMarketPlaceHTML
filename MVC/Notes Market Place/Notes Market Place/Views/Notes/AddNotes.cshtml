@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label class="titles">Display Picture</label>
                             @*@Html.TextBoxFor(model => model.DisplayPicture, new { @class = "form-control text-center note-preview"})*@
-                            <input type="file" class="form-control note-preview hide" name="DisplayImage" accept=".png,.jpeg,.jpg">
+                            <input type="file" class="form-control note-preview hide" name="DisplayImage" accept="image/*">
                             <img src="~/Content/images/upload-file.png" alt="upload-file" class="upload-notes">
                         </div>
 
@@ -232,13 +232,13 @@
                         <div class="form-check form-check-inline">
                             @*<input class="form-check-input form-check-input-1" type="radio" name="inlineRadioOptions"
                                 id="inlineRadio2" value="option2">*@
-                            @Html.RadioButtonFor(model => model.IsPaid, "true", new { @class = "form-check-input form-check-input-1" })
+                            @Html.RadioButtonFor(model => model.IsPaid,"true", new { @class = "form-check-input form-check-input-1" })
                             <label class="form-check-label" for="inlineRadio2">Paid</label>
                         </div>
                         <div class="form-check form-check-inline">
                             @*<input class="form-check-input form-check-input-1" type="radio" name="inlineRadioOptions"
                                 id="inlineRadio1" value="option1">*@
-                            @Html.RadioButtonFor(model => model.IsPaid, "false", new { @class = "form-check-input form-check-input-1" })
+                            @Html.RadioButtonFor(model => model.IsPaid,"false", new { @class = "form-check-input form-check-input-1" })
                             <label class="form-check-label" for="inlineRadio1">Free</label>
                         </div>
 
@@ -257,7 +257,7 @@
                                 <label for="note-preview" class="titles">Note Preview</label>
                                 @*@Html.TextBoxFor(model => model.NotesPreview, new { @class = "form-control  text-center note-preview" })*@
 
-                                <input type="file" class="form-control text-center note-preview" name="notepreview">
+                                <input type="file" class="form-control text-center note-preview" name="notepreview" accept=".pdf">
                                 <img src="~/Content/images/upload-file.png" alt="upload-file"
                                      class="upload-notes text-center">
                             </div>
@@ -280,36 +280,6 @@
         </div>
     </div>
 }
-
-
-<!--model-->
-<!-- Button trigger modal -->
-<!-- Modal -->
-@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <div>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
-                        </button>
-                    </div>
-                    <div id="model-content">
-                        <div class="note-description">
-                            <p>
-                                “Publishing this note will send note to administrator for review, once administrator review and approve then this note will be published to portal. Press yes to continue.”
-                            </p>
-                        </div>
-                        <div class="col-md-12 review text-right">
-                            <a class="btn btn-notes-under-preview btn-home-03" href="@Url.Action("")" target="save" role="button">Yes</a>
-                            <a class="btn btn-notes-under-preview btn-inreview" href="#" target="save" role="button">Cancel</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>*@
 
 <script src="~/Scripts/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">

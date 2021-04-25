@@ -1,19 +1,52 @@
 ﻿@model IEnumerable<Notes_Market_Place.Models.SellerNote>
 
+@{
+    Layout = null;
+}
+
+
+
+<!--table published notes-->
+@using (Html.BeginForm("Dashboard", "Notes", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-md-6">
+            <div class="home-03-info">
+                <h3>Published Notes</h3>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-8 col-sm-8 col-8">
+                    <div class="form-group dash-search front-serach-box" id="dashboard-btn">
+                        <span class="fa fa-search form-control-feedback"></span>
+                        @Html.TextBox("SearchPublished", null, new { @class = "form-control", @placeholder = "Search", @style = "margin-top:20px;" })
+                        @*<input type="text" class="form-control" placeholder="Search" name="Search">*@
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-4">
+                    <div id="dashboard-btn">
+                        <input class="btn btn-admin btn-home-03" type="submit" value="search" name="SearchPublished" style="margin-top:20px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+
 <div class="row table-responsive">
     <table class="table text-center">
         <thead>
             <tr class="titles">
                 <th scope="col">
-                    @*ADDED DATE*@
                     @Html.ActionLink("ADDED DATE", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : (ViewBag.SortorderPublish == "ASC" ? "DESC" : "ASC"), SortByPublish = "ADDED DATE", PageNumberPublish = ViewBag.PageNumberPublish == 0 ? 1 : ViewBag.PageNumberPublish }, new { @style = "color:#000000;" })
                 </th>
                 <th scope="col">
-                    @*TITLE*@
                     @Html.ActionLink("TITLE", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : (ViewBag.SortorderPublish == "ASC" ? "DESC" : "ASC"), SortByPublish = "TITLE", PageNumberPublish = ViewBag.PageNumberPublish == 0 ? 1 : ViewBag.PageNumberPublish }, new { @style = "color:#000000;" })
                 </th>
                 <th scope="col">
-                    @*CATEGORY*@
                     @Html.ActionLink("CATEGORY", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : (ViewBag.SortorderPublish == "ASC" ? "DESC" : "ASC"), SortByPublish = "CATEGORY", PageNumberPublish = ViewBag.PageNumberPublish == 0 ? 1 : ViewBag.PageNumberPublish }, new { @style = "color:#000000;" })
                 </th>
                 <th scope="col">SELL TYPE</th>
@@ -21,6 +54,10 @@
                 <th scope="col">ACTION</th>
             </tr>
         </thead>
+        @if (ViewBag.Message != null)
+        {
+            <tr class="text-center"><td colspan="6">@ViewBag.Message</td></tr>
+        }
         <tbody class="table-data">
 
             @foreach (var item in Model)
@@ -41,14 +78,18 @@
                         @if (item.IsPaid == true)
                         {
                             <td>Paid</td>
+                            <td>
+                                $@Html.DisplayFor(modelItem => item.SellingPrice)
+                            </td>
                         }
                         else
                         {
                             <td>Free</td>
+                            <td>
+                                $0
+                            </td>
                         }
-                        <td>
-                            $@Html.DisplayFor(modelItem => item.SellingPrice)
-                        </td>
+
                         <td>
                             <a href="@Url.Action("NotesDeatil", "Home", new {id = item.ID })"><img src="~/Content/images/eye.png" alt="eye-image"></a>
                         </td>
@@ -62,65 +103,62 @@
 </div>
 
 <section class="dashboard-pagination">
-        <div class="pagelist">
-            <nav>
-                <ul class="pagination justify-content-center">
-                    @*<li class="page-item">
-            <a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="left-arrow"></a>
-        </li>*@
-                    @{
-                        if (ViewBag.totalpagesPublish !=null)
+    <div class="pagelist">
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    if (ViewBag.totalpagesPublish != null)
+                    {
+                        double TotalPages1 = ViewBag.totalpagesPublish;
+                        if (ViewBag.PageNumberPublish == 1)
                         {
-                            double TotalPages1 = ViewBag.totalpagesPublish;
-                            if (ViewBag.PageNumberPublish == 1)
+                            <li class="page-item">
+                                @Html.ActionLink("<", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish }, new { @class = "page-link" })
+
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish - 1 }, new { @class = "page-link" })
+
+                            </li>
+                        }
+                        for (int i = 1; i <= TotalPages1; i++)
+                        {
+                            if (i == ViewBag.PageNumberPublish)
                             {
-                                <li class="page-item">
-                                    @Html.ActionLink("<", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish }, new { @class = "page-link" })
-                                    @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
+                                <li class="page-item active">
+                                    @Html.ActionLink(i.ToString(), "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = i }, new { @class = "page-link" })
+
                                 </li>
                             }
                             else
                             {
-                                <li class="page-item">
-                                    @Html.ActionLink("<", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish - 1 }, new { @class = "page-link" })
-                                    @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
-                                </li>
-                            }
-                            for (int i = 1; i <= TotalPages1; i++)
-                            {
-                                if (i == ViewBag.PageNumberPublish)
-                                {
-                                    <li class="page-item active">
-                                        @Html.ActionLink(i.ToString(), "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = i }, new { @class = "page-link" })
-                                        @*<a class="page-link" href="#">@i</a>*@
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="page-item ">
-                                        @Html.ActionLink(i.ToString(), "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = i }, new { @class = "page-link" })
-                                        @*<a class="page-link" href="#">@i</a>*@
-                                    </li>
-                                }
-                            }
-                            if (ViewBag.PageNumberPublish == TotalPages1)
-                            {
-                                <li class="page-item">
-                                    @Html.ActionLink(">", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish }, new { @class = "page-link" })
-                                    @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
-                                </li>
-                            }
-                            else
-                            {
-                                <li class="page-item">
-                                    @Html.ActionLink(">", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish + 1 }, new { @class = "page-link" })
-                                    @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
+                                <li class="page-item ">
+                                    @Html.ActionLink(i.ToString(), "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = i }, new { @class = "page-link" })
+
                                 </li>
                             }
                         }
+                        if (ViewBag.PageNumberPublish == TotalPages1)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish }, new { @class = "page-link" })
 
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "DashBoard", new { SortorderPublish = ViewBag.SortorderPublish == null ? "DESC" : ViewBag.SortorderPublish, SortByPublish = ViewBag.SortByPublish == null ? "TITLE" : ViewBag.SortByPublish, PageNumberPublish = ViewBag.PageNumberPublish + 1 }, new { @class = "page-link" })
+
+                            </li>
+                        }
                     }
-                </ul>
-            </nav>
-        </div>
-    </section>
+
+                }
+            </ul>
+        </nav>
+    </div>
+</section>

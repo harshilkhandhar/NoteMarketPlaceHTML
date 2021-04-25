@@ -1,0 +1,169 @@
+﻿
+@model IEnumerable<Notes_Market_Place.Models.NoteType>
+@{
+    ViewBag.Title = "ManageType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="dashboard">
+    <div class="container">
+        @using (Html.BeginForm("ManageType", "Admin", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-01">
+                        <h2>Manage Type</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div>
+                        <a class="btn btn-admin btn-home-03 add-administrator" href="~/Admin/AddType" target="Add" role="button">Add Type</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <div class="form-group dash-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search" })
+                                @*<input type="text" class="form-control" placeholder="Search">*@
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <div>
+                                <a class="btn btn-admin btn-home-03" href="#" target="save" role="button">search</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">
+                            @*CATEGORY*@
+                            @Html.ActionLink("TYPE", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "TYPE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @*DESCRIPTION*@
+                            @Html.ActionLink("DESCRIPTION", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DESCRIPTION", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("DATE ADDED", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            @*DATE ADDED*@
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("ADDED BY", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "ADDED BY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            @*ACTIVE*@
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("ACTIVE", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "ACTIVE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            @*ACTIVE*@
+                        </th>
+                        <th scope="col">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody class="table-data">
+                    @{var srno = (ViewBag.PageNumber - 1) * 5; }
+                    @foreach (var item in Model)
+                    {
+                        srno = srno + 1;
+                        <tr>
+                            <td>@srno</td>
+                            <td>@item.Name </td>
+                            <td>@item.Description </td>
+                            <td>@item.ModifiedDate </td>
+                            <td>
+                                @{
+                                    var db = new Notes_Market_Place.Models.NotesMarketPLaceEntities();
+                                    var Addedby = db.Users.Where(x => x.ID == item.CreatedBy).Select(x => x.FirstName);
+                                 } 
+                                Addedby
+                            </td>
+                            @if (item.IsActive == true)
+                            {
+                                <td>Yes</td>
+                            }
+                            else
+                            {
+                                <td>No</td>
+                            }
+                            <td>
+                                <a href="@Url.Action("EditType", "Admin", new { id = item.ID })"><img src="~/Content/images/edit.png" alt="edit-image"></a>
+                                <a href="@Url.Action("DeleteType", "Admin", new { id = item.ID })">
+                                    <img src="~/Content/images/delete.png"
+                                         alt="delete-image">
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+        <section class="dashboard-pagination">
+            <div class="pagelist">
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        @{
+                            if (ViewBag.totalpages != null)
+                            {
+                                double TotalPages = ViewBag.totalpages;
+                                if (ViewBag.PageNumber == 1)
+                                {
+                                    <li class="page-item">
+                                        @Html.ActionLink("<", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TYPE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        @Html.ActionLink("<", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TYPE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                                    </li>
+                                }
+                                for (int i = 1; i <= TotalPages; i++)
+                                {
+                                    if (i == ViewBag.PageNumber)
+                                    {
+                                        <li class="page-item active ">
+                                            @Html.ActionLink(i.ToString(), "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TYPE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item ">
+                                            @Html.ActionLink(i.ToString(), "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TYPE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                }
+                                if (ViewBag.PageNumber == TotalPages)
+                                {
+                                    <li class="page-item">
+                                        @Html.ActionLink(">", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TYPE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="page-item">
+                                        @Html.ActionLink(">", "ManageType", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "TYPE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                                    </li>
+                                }
+                            }
+                        }
+                    </ul>
+                </nav>
+            </div>
+        </section>
+    </div>
+
+</section>
+

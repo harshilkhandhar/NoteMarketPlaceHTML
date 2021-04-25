@@ -1,0 +1,62 @@
+﻿
+@model Notes_Market_Place.Models.Country
+
+@{
+    ViewBag.Title = "EditCountry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditCountry", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.CreatedDate)
+    @Html.HiddenFor(model => model.IsActive)
+    <section class="Add-notes">
+        <div class="content-box-md">
+            <div class="container">
+                <div class="row first-component">
+                    <div class="col-md-12">
+                        <div class="heading-01">
+                            <h2>Add Type</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <form>
+                                <div class="form-group input-flid">
+                                    <label for="text-1" class="titles">Country Name *</label>
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter your country name" })
+                                    @Html.ValidationMessageFor(model => model.Name)
+                                    @*<input type="text" class="form-control default-text" value="IT">*@
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Country Code *</label>
+                            @Html.TextAreaFor(model => model.CountryCode, new { @class = "form-control", @placeholder = "Enter your country code", @rows = 5 })
+                            @Html.ValidationMessageFor(model => model.CountryCode)
+                            @*<textarea class="form-control" id="" rows="5"
+                                placeholder="Enter your description"></textarea>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="home-add-notes">
+                            <input type="submit" class="btn btn-general btn-home-03" target="save" value="submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+}
+

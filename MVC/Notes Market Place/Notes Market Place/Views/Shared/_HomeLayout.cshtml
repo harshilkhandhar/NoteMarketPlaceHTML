@@ -29,7 +29,7 @@
     <header>
         <nav class="navbar navbar-expand-lg  bg-white white-nav-top fixed-top">
             <div class="container-fluid">
-                <a class="navbar-brand" href="Home Page.html"><img src="~/Content/images/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="~/Home/Index"><img src="~/Content/images/logo.png" alt="logo"></a>
                 <button class="navbar-toggler collapsed col-2" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarsExampleDefault" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -38,49 +38,41 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        @*<li class="nav-item">
-                                <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
-                            </li>*@
-                        @*<li class="nav-item">
-                                <a class="nav-link titles" href="">Sell Your Notes</a>
-                            </li>*@
-                        @*<li class="nav-item">
-                                <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
-                            </li>*@
-                        @if ( User.Identity.IsAuthenticated@*Session["ID"] != null*@)
-                        {
-                            @*<li class="nav-item">
-                                    <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link titles" href="@Url.Action("DashBoard","Notes",new {id= Session["ID"] })">Sell Your Notes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
-                                </li>*@
+                      
+                        @if (User.Identity.IsAuthenticated@*Session["ID"] != null*@)
+                        { 
                             <li class="nav-item">
-                                <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
+                                <a class="nav-link titles @ViewBag.SEARCHNOTE" href="~/Home/Search">Search Notes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link titles" href="@Url.Action("DashBoard","Notes"@*,new {id= Session["ID"] }*@)">Sell Your Notes</a>
+                                <a class="nav-link titles @ViewBag.Dash" href="@Url.Action("DashBoard","Notes"@*,new {id= Session["ID"] }*@)">Sell Your Notes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
+                                <a class="nav-link titles @ViewBag.Active" href="~/Home/FAQ">FAQ</a>
                             </li>
                             <li class="nav-item">
                                 @*@Html.ActionLink("Contect Us", "Contact", new { @class = "nav-link  titles", id = 1 })*@
-                                <a class="nav-link titles" href="@Url.Action("Contact","Home")">Contect Us</a>
+                                <a class="nav-link titles @ViewBag.Contect" href="@Url.Action("Contact","Home")">Contact Us</a>
                             </li>
                             <li class="nav-item dropdown admin-profile">
                                 <a class="nav-link dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/reviewer-1.png" alt="customer-image"></a>
+                                   aria-haspopup="true" aria-expanded="false">
+                                    @if (Session["Image"] != null)
+                                    {
+                                        <img src="@Url.Content( Session["Image"].ToString())" alt="customer-image">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/images/reviewer-1.png" alt="customer-image">
+                                    }
+                                </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
-                                    <a href="~/Content/Front Pages/Usre Profile.html" class="dropdown-item">My Profile</a>
-                                    <a href="~/Content/Front Pages/My Downloads.html" class="dropdown-item">My Downloads</a>
-                                    <a href="MySold Notes.html" class="dropdown-item">My Sold Notes</a>
-                                    <a href="My Rejected Notes.html" class="dropdown-item">My Rejected Notes</a>
+                                    <a href="~/Profile/UserProfile1" class="dropdown-item">My Profile</a>
+                                    <a href="~/Notes/MyDownload" class="dropdown-item">My Downloads</a>
+                                    <a href="~/Notes/MySoldNote" class="dropdown-item">My Sold Notes</a>
+                                    <a href="~/Notes/MyRejectedNote" class="dropdown-item">My Rejected Notes</a>
                                     <a href="~/Login/Changepass" class="dropdown-item">Change Password</a>
-                                    <a href="#myModal" class="dropdown-item logout-link"  target="publish"
+                                    <a href="#myModal" class="dropdown-item logout-link"
                                    role="button" data-toggle="modal">LOGOUT</a>
                                 </div>
                             </li>
@@ -92,17 +84,17 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link titles" href="~/Home/Search">Search Notes</a>
+                                <a class="nav-link titles @ViewBag.SEARCHNOTE" href="~/Home/Search">Search Notes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link titles" href="~/Login/Index">Sell Your Notes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link titles" href="~/Home/FAQ">FAQ</a>
+                                <a class="nav-link titles @ViewBag.Active" href="~/Home/FAQ">FAQ</a>
                             </li>
                             <li class="nav-item">
                                 @*@Html.ActionLink("Contect Us", "Contact", new { @class = "nav-link  titles", id = 1 })*@
-                                <a class="nav-link titles" href="~/Home/Contact">Contect Us</a>
+                                <a class="nav-link titles @ViewBag.Contect" href="~/Home/Contact">Contact Us</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link titles" href="~/Login/Index">Login</a>

@@ -11,18 +11,18 @@ namespace Notes_Market_Place.Models
    
     public class Contectus
     {
-        
-        [Required(ErrorMessage ="This is the required field")]
+        [Required]
+        [RegularExpression("[A-za-z]*", ErrorMessage = "Invalid Name")]
         public string FullName { get; set; }
 
-        [Required(ErrorMessage = "This is the required field")]
+        [Required(ErrorMessage = "This is Required Field")]
         [DataType(DataType.EmailAddress)]
         public string EmailID { get; set; }
 
-        [Required(ErrorMessage = "This is the required field")]
+        [Required(ErrorMessage = "This is Required Field")]
         public string Subject { get; set; }
 
-        [Required(ErrorMessage = "This is the required field")]
+        [Required(ErrorMessage = "This is Required Field")]
         public string Comments { get; set; }
     }
 }
