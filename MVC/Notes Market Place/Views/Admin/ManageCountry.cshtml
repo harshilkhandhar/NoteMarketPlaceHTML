@@ -1,0 +1,190 @@
+﻿@model IEnumerable<Notes_Market_Place.Models.Country>
+
+@{
+    ViewBag.Title = "ManageCountry";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+    <section class="dashboard">
+        <div class="container">
+            @using (Html.BeginForm("ManageCountry", "Admin", FormMethod.Get))
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="heading-01">
+                            <h2>Manage Country</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <div>
+                            <a class="btn btn-admin btn-home-03 add-administrator" href="~/Admin/AddCountry">Add Country</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-8 col-8">
+                                <div class="form-group dash-search">
+                                    <span class="fa fa-search form-control-feedback"></span>
+                                    @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search" })
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-4">
+                                <div>
+                                    <input class="btn btn-admin btn-home-03" type="submit" value="search" name="Search">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr class="titles">
+                            <th scope="col">SR NO.</th>
+                            <th scope="col">
+
+                                @Html.ActionLink("COUNTRY", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "COUNTRY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            </th>
+                            <th scope="col">
+
+                                @Html.ActionLink("COUNTRY CODE", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "COUNTRY CODE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            </th>
+                            <th scope="col">
+                                @Html.ActionLink("DATE ADDED", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            </th>
+                            <th scope="col">
+                                @Html.ActionLink("ADDED BY", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "ADDED BY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            </th>
+                            <th scope="col">
+                                @Html.ActionLink("ACTIVE", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "ACTIVE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                            </th>
+                            <th scope="col">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-data">
+                        @{var srno = (ViewBag.PageNumber - 1) * 5; }
+                        @foreach (var item in Model)
+                        {
+                            srno = srno + 1;
+                            <tr>
+                                <td>@srno</td>
+                                <td>@item.Name </td>
+                                <td>@item.CountryCode </td>
+                                <td>@item.ModifiedDate </td>
+                                <td>
+                                    @{
+                                        var db = new Notes_Market_Place.Models.NotesMarketPLaceEntities();
+                                        var Addedby = db.Users.Where(x => x.ID == item.CreatedBy).FirstOrDefault();
+                                    }
+                                    @Addedby.FirstName @Addedby.LastName
+                                </td>
+                                @if (item.IsActive == true)
+                                {
+                                    <td>Yes</td>
+                                }
+                                else
+                                {
+                                    <td>No</td>
+                                }
+                                <td>
+                                    <a href="@Url.Action("EditCountry", "Admin", new { id = item.ID })"><img src="~/Content/images/edit.png" alt="edit-image"></a>
+                                    <a href="#deletecountry-@item.ID" target="save" role="button"
+                                       data-toggle="modal">
+                                        <img src="~/Content/images/delete.png" alt="delete-image">
+                                    </a>
+
+
+                                    <!-- DeleteCountry Model -->
+                                    <div class="modal fade" id="deletecountry-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="model-content">
+                                                        <div class="note-description">
+                                                            <p>
+                                                                “Are you sure you want to make this Country inactivate?.”
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-12 review text-right">
+
+                                                            @Html.ActionLink("Yes", "DeleteCountry", "Admin", new { id = item.ID }, new { @class = "btn btn-notes-under-preview btn-home-03" })
+
+                                                            <a class="btn btn-notes-under-preview btn-inreview" data-dismiss="modal">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+
+            <section class="dashboard-pagination">
+                <div class="pagelist">
+                    <nav>
+                        <ul class="pagination justify-content-center">
+                            @{
+                                if (ViewBag.totalpages != null)
+                                {
+                                    double TotalPages = ViewBag.totalpages;
+                                    if (ViewBag.PageNumber == 1)
+                                    {
+                                        <li class="page-item">
+                                            @Html.ActionLink("<", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "COUNTRY" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            @Html.ActionLink("<", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "COUNTRY" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                    for (int i = 1; i <= TotalPages; i++)
+                                    {
+                                        if (i == ViewBag.PageNumber)
+                                        {
+                                            <li class="page-item active ">
+                                                @Html.ActionLink(i.ToString(), "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "COUNTRY" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="page-item ">
+                                                @Html.ActionLink(i.ToString(), "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "COUNTRY" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                            </li>
+                                        }
+                                    }
+                                    if (ViewBag.PageNumber == TotalPages)
+                                    {
+                                        <li class="page-item">
+                                            @Html.ActionLink(">", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "COUNTRY" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="page-item">
+                                            @Html.ActionLink(">", "ManageCountry", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "COUNTRY" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                                        </li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+        </div>
+    </section>

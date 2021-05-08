@@ -1,0 +1,120 @@
+﻿
+@model  Notes_Market_Place.Models.Changepassword
+
+@{
+    Layout = null;
+}
+
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0 ,user-scalable=no">
+    <title>Change Password</title>
+
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="~/Content/images/favicon.ico">
+
+    <!--GoogleFont-->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!--font - awesome-->
+    <link rel="stylesheet" href="~/Content/css/font-awesome/css/font-awesome.min.css">
+
+    <!--bootstrap css-->
+    <link rel="stylesheet" href="~/Content/css/bootstrap/bootstrap.min.css">
+
+    <!--style css-->
+    <link rel="stylesheet" href="~/Content/css/style.css">
+
+    <!--Responsive CSS-->
+    <link rel="stylesheet" href="~/Content/css/responsive.css">
+
+</head>
+
+<body>
+    <section>
+        <!--Background Image-->
+        <div class="home-bg-image">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class=" col-12 col-sm-9 col-md-6">
+                        @using (Html.BeginForm("Changepass", "Login", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <form>
+                                <div class="login-form">
+                                    <img src="~/Content/images/top-logo.png" alt="logo" class="login-img">
+                                    <div class="form-container">
+                                        <div class="login-1">
+                                            <div class="heading-01 text-center">
+                                                <h2>Change Password</h2>
+                                                <p class="login-pera">Enter your new password to change your password</p>
+                                            </div>
+                                        </div>
+                                        @if (ViewBag.Error != null)
+                                        {
+                                            <div class="text-center">
+                                                <p id="password-error"><i class="fa fa-times"></i>@ViewBag.Error</p>
+                                            </div>
+                                        }
+                                        else if (ViewBag.Message != null)
+                                        {
+                                            <div class="text-center">
+                                                <p id="signup-pera"><i class="fa fa-check-circle"></i>@ViewBag.Message</p>
+                                            </div>
+                                        }
+                                        <div class="form-group pass-flid">
+                                            <label class="titles">Old Password</label>
+                                            @Html.PasswordFor(modal => modal.Password, new { @class = "form-control", @id = "InputChangePassword1", @placeholder = "Enter your password" })
+                                            @Html.ValidationMessageFor(modal => modal.Password)
+                                            <span toggle="#InputChangePassword1"
+                                                  class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
+                                        </div>
+                                        <div class="form-group pass-flid">
+                                            <label class="titles">New Password </label>
+                                            @Html.PasswordFor(modal => modal.NewPassword, new { @class = "form-control", @id = "InputChangePassword2", @placeholder = "Enter your password" })
+                                            @Html.ValidationMessageFor(modal => modal.NewPassword)
+                                            <span toggle="#InputChangePassword2"
+                                                  class="fa fa-fw fa-eye field-icon toggle-password"></span>
+
+                                        </div>
+                                        <div class="form-group pass-flid">
+                                            <label class="titles">Conform Password </label>
+                                            @Html.PasswordFor(modal => modal.ConformPassword, new { @class = "form-control", @id = "InputChangePassword3", @placeholder = "Enter your password" })
+                                            @Html.ValidationMessageFor(modal => modal.ConformPassword)
+                                            <span toggle="#InputChangePassword3"
+                                                  class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-lg btn-block login-btn">submit</button>
+                                    </div>
+
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Home Ends-->
+    <!--jQuery-->
+    <script src="~/Scripts/jquery-3.5.1.min.js"></script>
+
+    <!--bootstrap JS-->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!--Custom javascript-->
+    <script src="~/Scripts/script.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+
+</html>

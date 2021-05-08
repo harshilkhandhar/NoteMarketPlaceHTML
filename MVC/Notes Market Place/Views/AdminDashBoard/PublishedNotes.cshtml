@@ -1,0 +1,232 @@
+﻿
+@model IEnumerable<Notes_Market_Place.Models.SellerNote>
+
+@{
+    ViewBag.Title = "PublishedNotes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="dashboard">
+    <div class="container">
+        @using (Html.BeginForm("PublishedNotes", "AdminDashBoard", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-01">
+                        <h2>Published Notes</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="titles">Seller</label>
+                    @Html.DropDownList("Seller",new SelectList(ViewBag.Sellerlist,"Value","Text", ViewBag.seller), "Select Seller", new { @class = "form-control form-control-md select admin-dropdown default-text", @onchange = "this.form.submit()" })
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <div class="form-group dash-search" id="dashboard-btn">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search", @style = "margin-top:30px;" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <div id="dashboard-btn">
+                                <input class="btn btn-admin btn-home-03" type="submit" value="search" name="Search" style="margin-top:30px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row table-responsive">
+            <table class="table review-table ">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">
+
+                            @Html.ActionLink("NOTE TITLE", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("CATEGORY", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("SELL TYPE", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "SELL TYPE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("PRICE", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "PRICE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("SELLER", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col"></th>
+                        <th scope="col">
+
+                            @Html.ActionLink("PUBLISHED DATE", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "PUBLISHED DATE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">APPORVED BY</th>
+                        <th scope="col">NUMBER OF DOWNLOADS</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @if (ViewBag.Message != null)
+                {
+                    <tr class="text-center"><td colspan="10">@ViewBag.Message</td></tr>
+                }
+                <tbody class="table-data text-center">
+                    @{var srno = (ViewBag.PageNumber - 1) * 5; }
+                    @foreach (var item in Model)
+                    {
+                        srno = srno + 1;
+                        if (item.Status == 9)
+                        {
+                        <tr>
+                            <td>@srno</td>
+                            <td class="text-left"><a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })">@item.Title</a></td>
+                            <td class="text-left">@item.NoteCategory.Name</td>
+                            @if (item.IsPaid == false)
+                            {
+                                <td class="text-left">
+                                    Free
+
+                                </td>
+                                <td>
+                                    $0
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-left">
+                                    Paid
+
+                                </td>
+                                <td>
+                                    $@item.SellingPrice
+                                </td>
+                            }
+                            <td class="text-left">@item.User.FirstName @item.User.LastName</td>
+                            <td><a href="@Url.Action("MemberDetails","MemberDetail",new {id=item.SellerID})"><img src="~/Content/images/eye.png" alt="eye-image"></a></td>
+                            @if (item.PublishedDate != null)
+                            {
+                                <td>@item.PublishedDate.Value.ToString("dd MMM yyyy,hh:mm")@*25-11-2020,11:08*@</td>
+                            }
+                            else
+                            {
+                                <td>NA</td>
+
+                            }
+
+
+                            @{
+                                var db = new Notes_Market_Place.Models.NotesMarketPLaceEntities();
+                                var Approvedby = db.Users.Where(x => x.ID == item.ActionBy).FirstOrDefault();
+                                var downloads = db.Downloads.Where(x => x.NoteID == item.ID && x.IsAttechmentDownloads == true).Count();
+                                
+                            }
+
+                            @if (Approvedby != null)
+                            {
+                                <td class="text-left">@Approvedby.FirstName @Approvedby.LastName</td>
+                            }
+                            else
+                            {
+                                <td class="text-left">Raj Sheth</td>
+                            }
+
+                            <td><a href="~/AdminDashBoard/DownloadNotes">@downloads</a></td>
+                            <td class="dropleft">
+                                <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                    <a href="@Url.Action("AdminDashBoardDownload","AdminDashBoard",new {id=item.ID})" class="dropdown-item">Download Notes</a>
+                                    <a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })" class="dropdown-item">View More Details</a>
+                                    <a href="#unpublish-@item.ID" target="save" role="button"
+                                       data-toggle="modal" class="dropdown-item">Unpublish</a>
+                                </div>
+
+                                <!-- Unpublished Model -->
+                                <div class="modal fade" id="unpublish-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                     aria-hidden="true">
+
+                                    @Html.Action("Unpublished", "AdminDashBoard", new { id = item.ID })
+
+                                </div>
+                            </td>
+                        </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-pagination">
+    <div class="pagelist">
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    if (ViewBag.totalpages != null)
+                    {
+                        double TotalPages = ViewBag.totalpages;
+                        if (ViewBag.PageNumber == 1)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                        for (int i = 1; i <= TotalPages; i++)
+                        {
+                            if (i == ViewBag.PageNumber)
+                            {
+                                <li class="page-item active ">
+                                    @Html.ActionLink(i.ToString(), "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item ">
+                                    @Html.ActionLink(i.ToString(), "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                        }
+                        if (ViewBag.PageNumber == TotalPages)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "PublishedNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
+
+
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.admin-dropdown').change(function () {
+            $('.admin-dropdown').submit();
+        })
+    });
+</script>

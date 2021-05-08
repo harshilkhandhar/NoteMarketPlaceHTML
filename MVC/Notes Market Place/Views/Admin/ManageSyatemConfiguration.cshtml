@@ -1,0 +1,124 @@
+﻿@model Notes_Market_Place.Models.ManageSyatemConfiguration
+
+@{
+    ViewBag.Title = "ManageSyatemConfiguration";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("ManageSyatemConfiguration", "Admin", FormMethod.Post, new
+{
+    enctype = "multipart/form-data"
+}))
+{
+    <section class="Add-notes">
+        <div class="content-box-md">
+            <div class="container">
+                <div class="row first-component">
+                    <div class="col-md-12">
+                        <div class="heading-01">
+                            <h2>Manage System Configuration</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                                <div class="form-group input-flid">
+                                    <label for="text-1" class="titles">Support emails address *</label>
+                                    @Html.TextBoxFor(model => model.Supportemailsaddress, new { @class = "form-control", @placeholder = "Enter your email address" })
+                                    @Html.ValidationMessageFor(model => model.Supportemailsaddress)
+                                </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Support phone number *</label>
+                            @Html.TextBoxFor(model => model.Supportphonenumber, new { @class = "form-control", @placeholder = "Enter Phone number" })
+                            @Html.ValidationMessageFor(model => model.Supportphonenumber)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Email Address(es)*</label>
+                            @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", @placeholder = "Enter email address" })
+                            @Html.ValidationMessageFor(model => model.EmailAddress)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Facebook URL</label>
+                            @Html.TextBoxFor(model => model.FacebookURL, new { @class = "form-control", @placeholder = "Enter facebook url" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Twitter URL</label>
+                            @Html.TextBoxFor(model => model.TwitterURL, new { @class = "form-control", @placeholder = "Enter twitter url" })
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Linkedin URL</label>
+                            @Html.TextBoxFor(model => model.LinkedinURL, new { @class = "form-control", @placeholder = "Enter linkedin url" })
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">
+                                Default image for notes(if seller do not
+                                upload)
+                            </label>
+                            @Html.ValidationMessageFor(model => model.DisplayImage)
+                            @Html.TextBoxFor(model => model.DisplayImage, "", new { @type = "file", @class = "form-control note-preview text-center hide", @accept = "image/*" })
+                            
+                            @if (Model.displayimage != null)
+                            {
+                                <p class="titles">To see your default image for notes <a href="@Url.Content(Model.displayimage)" target="_blank">click here</a></p>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">
+                                Default profile picture(if seller do not
+                                upload)
+                            </label>
+                            @Html.ValidationMessageFor(model => model.ProfilePicture)
+                            @Html.TextBoxFor(model => model.ProfilePicture, "", new { @type = "file", @class = "form-control note-preview text-center hide", @accept = "image/*" })
+                            @if (Model.profilepicture != null)
+                            {
+                                <img src="@Url.Content(Model.profilepicture)" alt="upload-file" class="upload-notes">
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/upload-file.png" alt="upload-file" class="upload-notes">
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="home-add-notes">
+                            <input type="submit" class="btn btn-general btn-home-03" value="submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

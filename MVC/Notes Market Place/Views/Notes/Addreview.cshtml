@@ -1,0 +1,53 @@
+﻿@model Notes_Market_Place.Models.SellerNotesReview
+@{
+    Layout = null;
+}
+
+@using (Html.BeginForm("Addreview", "Notes", new { id = ViewBag.id }, FormMethod.Post))
+{
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                    </button>
+                </div>
+                <div id="model-content">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="home-03-info">
+                                <h3>@ViewBag.title</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+
+                            <div class="rate">
+                                @Html.RadioButtonFor(model => model.Ratings, "5", new { id = "star5-"+ ViewBag.id, name = "rate" })
+                                <label for="star5-@ViewBag.id" title="text">5 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "4", new { id = "star4-" + ViewBag.id, name = "rate" })
+                                <label for="star4-@ViewBag.id" title="text">4 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "3", new { id = "star3-"+ ViewBag.id, name = "rate" })
+                                <label for="star3-@ViewBag.id" title="text">3 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "2", new { id = "star2-"+ ViewBag.id, name = "rate" })
+                                <label for="star2-@ViewBag.id" title="text">2 stars</label>
+                                @Html.RadioButtonFor(model => model.Ratings, "1", new { id = "star1-"+ ViewBag.id, name = "rate" })
+                                <label for="star1-@ViewBag.id" title="text">1 star</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group input-flid">
+                                <label for="description" class="titles">Comments *</label>
+                                @Html.TextAreaFor(model => model.Comments, new { @class = "form-control", @placeholder = "Comments...", @rows = 4 })
+                                @Html.ValidationMessageFor(model => model.Comments)
+                            </div>
+                        </div>
+                        <div class="col-md-12 review">
+                            <input type="submit" class="btn btn-admin btn-home-03" value="submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,77 @@
+﻿
+
+@model Notes_Market_Place.Models.SellerNote
+
+@{
+    Layout = null;
+}
+
+
+@using (Html.BeginForm("Unpublished", "AdminDashBoard", new { id = ViewBag.id }, FormMethod.Post))
+{
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-left">
+                <div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                    </button>
+                </div>
+                <div id="model-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="home-03-info">
+                                    <h3>@ViewBag.notetitle-@ViewBag.category</h3>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group input-flid">
+                                    <label for="description" class="titles">Remarks</label>
+                                    @Html.TextAreaFor(model => model.AdminRemarks, new { @class = "form-control", @placeholder = "Write remarks", @rows = 3 })
+                                    @Html.ValidationMessageFor(model => model.AdminRemarks)
+                                </div>
+                            </div>
+                            <div class="col-md-12 review text-right">
+                                <a class="btn btn-notes-under-preview btn-reject" href="#mymodel1" target="save" role="button" data-toggle="modal">Unpublished</a>
+                                <button class="btn btn-notes-under-preview btn-inreview" data-dismiss="modal">Cancle</button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- unpublished Model -->
+    <div class="modal fade" id="mymodel1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                        </button>
+                    </div>
+                    <div id="model-content">
+                        <div class="note-description">
+                            <p>
+                                “Are you sure you want to Unpublish this note?.”
+                            </p>
+                        </div>
+                        <div class="col-md-12 review text-right">
+                            <input type="submit" class="btn btn-notes-under-preview btn-home-03" value="yes">
+                            <a class="btn btn-notes-under-preview btn-inreview" data-dismiss="modal">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

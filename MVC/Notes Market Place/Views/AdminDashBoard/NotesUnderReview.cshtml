@@ -1,0 +1,256 @@
+﻿
+@model IEnumerable<Notes_Market_Place.Models.SellerNote>
+
+@{
+    ViewBag.Title = "NotesUnderReview";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="dashboard">
+    <div class="container">
+        @using (Html.BeginForm("NotesUnderReview", "AdminDashBoard", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-01">
+                        <h2>Notes Under Review</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="titles">Seller</label>
+                    @Html.DropDownList("Seller", new SelectList(ViewBag.Sellerlist, "Value", "Text", ViewBag.seller)@*ViewBag.seller as SelectList*@, "Select Seller", new { @class = "form-control form-control-md select admin-dropdown default-text", @onchange = "this.form.submit()" })
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <div class="form-group dash-search" id="dashboard-btn">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search", @style = "margin-top:30px;" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <div id="dashboard-btn">
+                                <input class="btn btn-admin btn-home-03" type="submit" value="search" name="Search" style="margin-top:30px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row table-responsive">
+            <table class="table review-table">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">
+
+                            @Html.ActionLink("NOTE TITLE", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("CATEGORY", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("SELLER", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col"></th>
+                        <th scope="col">
+
+                            @Html.ActionLink("DATE ADDED", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("STATUS", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "STATUS", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col" class="text-center">ACTION</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @if (ViewBag.Message != null)
+                {
+                    <tr class="text-center"><td colspan="10">@ViewBag.Message</td></tr>
+                }
+                <tbody class="table-data text-center">
+                    @{var srno = (ViewBag.PageNumber - 1) * 5; }
+                    @foreach (var item in Model)
+                    {
+                        srno = srno + 1;
+                        if (item.Status == 7 || item.Status == 8)
+                        {
+                            <tr>
+                                <td>@srno</td>
+                                <td class="text-left"><a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })">@item.Title</a></td>
+                                <td class="text-left">@item.NoteCategory.Name</td>
+                                <td class="text-left">@item.User.FirstName @item.User.LastName</td>
+                                <td><a href="@Url.Action("MemberDetails","MemberDetail",new {id=item.SellerID})"><img src="~/Content/images/eye.png" alt="eye-image"></a></td>
+                                <td>@item.CreatedDate.Value.ToString("dd MMM yyyy,hh:mm")</td>
+                                <td class="text-left">@item.ReferenceData.value</td>
+                                <td class="text-left review">
+                                    <button class="btn btn-notes-under-preview btn-approve" href="#approved-@item.ID" data-toggle="modal">Approve</button>
+                                    <button class="btn btn-notes-under-preview btn-reject" href="#rejected-@item.ID" data-toggle="modal">Reject</button>
+                                    @if (item.Status == 7)
+                                    {
+                                        <button class="btn btn-notes-under-preview btn-inreview" href="#inreview-@item.ID" data-toggle="modal">InReview</button>
+                                    }
+                                    else
+                                    {
+                                        <button class="btn btn-notes-under-preview btn-inreview" disabled>InReview</button>
+                                    }
+
+
+
+
+                                    <!-- Rejected Model -->
+                                    <div class="modal fade" id="rejected-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+
+                                        @Html.Action("RejectedModel", "AdminDashBoard", new { id = item.ID })
+
+                                    </div>
+
+
+                                    <!-- InReview Model -->
+                                    <div class="modal fade" id="inreview-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="model-content">
+                                                        <div class="note-description">
+                                                            <p>
+                                                                “Via marking the note In Review - System will let user know that review process has been initiated.Please press yes to continue.”
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-12 review text-right">
+                                                            @Html.ActionLink("Yes", "InReview", "AdminDashBoard", new { id = item.ID }, new { @class = "btn btn-notes-under-preview btn-home-03" })
+                                                            <a class="btn btn-notes-under-preview btn-inreview" data-dismiss="modal">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <!-- Approved Model -->
+                                    <div class="modal fade" id="approved-@item.ID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                         aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="model-content">
+                                                        <div class="note-description">
+                                                            <p>
+                                                                “If you approved the notes - System will publish the notes over portal.Please press yes to continue.”
+                                                            </p>
+                                                        </div>
+                                                        <div class="col-md-12 review text-right">
+                                                            @Html.ActionLink("Yes", "Approved", "AdminDashBoard", new { id = item.ID }, new { @class = "btn btn-notes-under-preview btn-home-03" })
+                                                            <a class="btn btn-notes-under-preview btn-inreview" data-dismiss="modal">Cancel</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="dropleft">
+                                    <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                        <a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })" class="dropdown-item">View More Details</a>
+                                        <a href="@Url.Action("AdminDashBoardDownload","AdminDashBoard",new {id=item.ID})" class="dropdown-item">Download Notes</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="dashboard-pagination">
+    <div class="pagelist">
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    if (ViewBag.totalpages != null)
+                    {
+                        double TotalPages = ViewBag.totalpages;
+                        if (ViewBag.PageNumber == 1)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                        for (int i = 1; i <= TotalPages; i++)
+                        {
+                            if (i == ViewBag.PageNumber)
+                            {
+                                <li class="page-item active ">
+                                    @Html.ActionLink(i.ToString(), "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item ">
+                                    @Html.ActionLink(i.ToString(), "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                        }
+                        if (ViewBag.PageNumber == TotalPages)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "NotesUnderReview", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
+
+
+
+<script src="~/Scripts/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.admin-dropdown').change(function () {
+            $('.admin-dropdown').submit();
+        })
+    });
+</script>
+
+
+

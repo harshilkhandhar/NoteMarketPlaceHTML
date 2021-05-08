@@ -1,0 +1,194 @@
+﻿
+@model IEnumerable<Notes_Market_Place.Models.Download>
+
+@{
+    ViewBag.Title = "DownloadNotes";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<section class="dashboard">
+    <div class="container">
+        @using (Html.BeginForm("DownloadNotes", "AdminDashBoard", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="heading-01">
+                        <h2>Downloaded Notes</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="titles">Note</label>
+                            @Html.DropDownList("Note", ViewBag.note as SelectList, "Select Note", new { @class = "form-control form-control-md select admin-dropdown default-text", @onchange = "this.form.submit()" })
+                        </div>
+                        <div class="col-md-4">
+                            <label class="titles">Seller</label>
+                            @Html.DropDownList("Seller", new SelectList(ViewBag.Sellerlist, "Value", "Text", ViewBag.seller), "Select Seller", new { @class = "form-control form-control-md select admin-dropdown default-text", @onchange = "this.form.submit()" })
+                        </div>
+                        <div class="col-md-4">
+                            <label class="titles">Buyer</label>
+                            @Html.DropDownList("Buyer", new SelectList(ViewBag.Buyerlist, "Value", "Text", ViewBag.buyer), "Select Buyer", new { @class = "form-control form-control-md select admin-dropdown default-text", @onchange = "this.form.submit()" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <div class="form-group dash-search" id="dashboard-btn">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search", @style = "margin-top:30px;"})
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <div id="dashboard-btn">
+                                <input class="btn btn-admin btn-home-03" type="submit" value="search" name="Search" style="margin-top:30px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row table-responsive">
+            <table class="table review-table">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">
+                            @Html.ActionLink("NOTE TITLE", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("CATEGORY", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("BUYER", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "BUYER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col"></th>
+                        <th scope="col">
+                            @Html.ActionLink("SELLER", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "SELLER", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col"></th>
+                        <th scope="col">
+                            @Html.ActionLink("SELL TYPE", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "SELL TYPE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+                            @Html.ActionLink("PRICE", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "PRICE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col">
+
+                            @Html.ActionLink("DOWNLOADED DATE/TIME", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DOWNLOADED DATE/TIME", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })
+                        </th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @if (ViewBag.Message != null)
+                {
+                    <tr class="text-center"><td colspan="11">@ViewBag.Message</td></tr>
+                }
+                <tbody class="table-data text-center">
+                    @{var srno = (ViewBag.PageNumber - 1) * 5; }
+                    @foreach (var item in Model)
+                    {
+                        srno = srno + 1;
+                        <tr>
+                            <td>@srno.</td>
+                            <td class="text-left">
+                                <a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.NoteID })">@item.NoteTitle</a>
+                            </td>
+                            <td class="text-left">@item.NoteCategory</td>
+                            <td class="text-left">@item.User.FirstName @item.User.LastName</td>
+                            <td><a href="@Url.Action("MemberDetails","MemberDetail",new {id=item.Downloader})"><img src="~/Content/images/eye.png" alt="eye-image"></a></td>
+                            <td class="text-left">@item.SellerNote.User.FirstName @item.SellerNote.User.LastName</td>
+                            <td><a href="@Url.Action("MemberDetails","MemberDetail",new {id=item.Seller})"><img src="~/Content/images/eye.png" alt="eye-image"></a></td>
+                            @if (item.IsPaid == false)
+                            {
+                                <td class="text-left">
+                                    Free
+                                </td>
+                                <td>
+                                    $0
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="text-left">
+                                    Paid
+                                </td>
+                                <td>
+                                    $@item.PurchasedPrice
+                                </td>
+                            }
+                            <td>@item.ModifiedDate.Value.ToString("dd-MMM-yyyy,hh:mm")</td>
+                            <td class="dropleft">
+                                <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                    <a href="@Url.Action("AdminDashBoardDownload","AdminDashBoard",new {id=item.NoteID})" class="dropdown-item">Download Notes</a>
+                                    <a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.NoteID })" class="dropdown-item">View More Details</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-pagination">
+    <div class="pagelist">
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    if (ViewBag.totalpages != null)
+                    {
+                        double TotalPages = ViewBag.totalpages;
+                        if (ViewBag.PageNumber == 1)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                        for (int i = 1; i <= TotalPages; i++)
+                        {
+                            if (i == ViewBag.PageNumber)
+                            {
+                                <li class="page-item active ">
+                                    @Html.ActionLink(i.ToString(), "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item ">
+                                    @Html.ActionLink(i.ToString(), "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                        }
+                        if (ViewBag.PageNumber == TotalPages)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "DownloadNotes", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
+

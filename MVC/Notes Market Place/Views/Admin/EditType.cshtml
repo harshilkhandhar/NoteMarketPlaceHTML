@@ -1,0 +1,56 @@
+﻿@model Notes_Market_Place.Models.NoteType
+
+@{
+    ViewBag.Title = "EditType";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("EditType", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.ID)
+    @Html.HiddenFor(model => model.CreatedBy)
+    @Html.HiddenFor(model => model.CreatedDate)
+    @Html.HiddenFor(model => model.IsActive)
+    <section class="Add-notes">
+        <div class="content-box-md">
+            <div class="container">
+                <div class="row first-component">
+                    <div class="col-md-12">
+                        <div class="heading-01">
+                            <h2>Add Type</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <form>
+                                <div class="form-group input-flid">
+                                    <label for="text-1" class="titles">Type *</label>
+                                    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Enter your notes title" })
+                                    @Html.ValidationMessageFor(model => model.Name)
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group input-flid">
+                            <label for="description" class="titles">Description *</label>
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", @placeholder = "Enter your description", @rows = 5 })
+                            @Html.ValidationMessageFor(model => model.Description)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="home-add-notes">
+                            <input type="submit" class="btn btn-general btn-home-03" target="save" value="submit">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,356 @@
+﻿
+@model IEnumerable<Notes_Market_Place.Models.SellerNote>
+
+@{
+    ViewBag.Title = "MemberDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section id="member">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-01">
+                    <h2>Member Details</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!--left part-->
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4 col-sm-4">
+                        @if (ViewBag.profilepicture != null)
+                        {
+                            <img src="@Url.Content(ViewBag.profilepicture)" alt="member-image" id="member-Detail-img" height="150px" width="150px">
+                        }
+                        else
+                        {
+                            <img src="images/member.png" alt="member-image" id="member-Detail-img">
+                        }
+
+                    </div>
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-left">
+                                    <h4>First Name:</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-right">
+                                    <h4>@ViewBag.firstname</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-left">
+                                    <h4>Last Name:</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-right">
+                                    <h4>@ViewBag.lastname</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-left">
+                                    <h4>Email:</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-right">
+                                    <h4>@ViewBag.email</h4>
+                                </div>
+                            </div>
+                        </div>
+                        @if (ViewBag.dateofbirth != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-left">
+                                        <h4>DOB:</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-right">
+                                        <h4>@ViewBag.dateofbirth</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (ViewBag.phonenumber != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-left">
+                                        <h4>Phone Number:</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-right">
+                                        <h4>@ViewBag.phonenumber</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (ViewBag.collage != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-left">
+                                        <h4>Collage/University:</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-right">
+                                        <h4>@ViewBag.collage</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+            <!--right part-->
+            <div class="col-md-6 member-right">
+                <div class="row vl">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-left">
+                                    <h4>Address 1:</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-right">
+                                    <h4>@ViewBag.Address1</h4>
+                                </div>
+                            </div>
+                        </div>
+                        @if (ViewBag.Address2 != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-left">
+                                        <h4>Address 2:</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-right">
+                                        <h4>@ViewBag.Address2</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (@ViewBag.city != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-left">
+                                        <h4>City:</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-right">
+                                        <h4>@ViewBag.city</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (ViewBag.state != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-left">
+                                        <h4>State:</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-right">
+                                        <h4>@ViewBag.state</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        @if (ViewBag.country != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-left">
+                                        <h4>Country:</h4>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-6">
+                                    <div class="member-detail-right">
+                                     
+                                        <h4>@ViewBag.country</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-left">
+                                    <h4>Zip Code:</h4>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-6">
+                                <div class="member-detail-right">
+                                    <h4>@ViewBag.zipcode</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="home-03-info">
+                    <h3>Notes</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col"> @Html.ActionLink("NOTE TITLE", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col"> @Html.ActionLink("CATEGORY", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">@Html.ActionLink("STATUS", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "STATUS", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">@Html.ActionLink("DOWNLOADED NOTES", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DOWNLOADED NOTES", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">TOTAL EARNINGS</th>
+                        <th scope="col">@Html.ActionLink("DATE ADDED", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DATE ADDED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">@Html.ActionLink("PUBLISHED DATE", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "PUBLISHED DATE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @if (ViewBag.Message != null)
+                {
+                    <tr class="text-center"><td colspan="9">@ViewBag.Message</td></tr>
+                }
+            <tbody class="table-data text-center">
+                @{var srno = (ViewBag.PageNumber - 1) * 5; }
+                @foreach (var item in Model)
+                {
+                    srno = srno + 1;
+                    if (item.SellerID == ViewBag.id && item.Status != 6)
+                    {
+                    <tr>
+                        <td>@srno.</td>
+                        <td class="text-left"><a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new {id = item.ID })">@item.Title</a></td>
+                        <td class="text-left">@item.NoteCategory.Name</td>
+                        <td>@item.ReferenceData.value</td>
+                        @{
+                            var db = new Notes_Market_Place.Models.NotesMarketPLaceEntities();
+                            var downloaded = db.Downloads.Where(x => x.NoteID == item.ID && x.IsAttechmentDownloads == true).Count();
+                            var earning = db.Downloads.Where(x => x.NoteID == item.ID && x.IsSellerHasAllowedDownloads == true).Sum(x => x.PurchasedPrice);
+                        }
+                        <td>@downloaded</td>
+                        @if (earning != null) {<td>$@earning</td>}
+                        else { <td>$0</td>}
+
+                        <td>@item.CreatedDate.Value.ToString("dd-MM-yyyy,hh:mm")</td>
+                        @if (item.PublishedDate != null)
+                        {
+                            <td>
+                                @item.PublishedDate.Value.ToString("dd-MM-yyyy,hh:mm")
+                            </td>
+                        }
+                        else
+                        {
+                            <td>NA</td>
+                        }
+                        <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="~/Content/images/dots.png" alt="dots">
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                <a href="@Url.Action("AdminDashBoardDownload","AdminDashBoard",new {id=item.ID})" class="dropdown-item">Download Notes</a>
+                            </div>
+                        </td>
+                    </tr>
+                    }  
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-pagination">
+    <div class="pagelist">
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    if (ViewBag.totalpages != null)
+                    {
+                        double TotalPages = ViewBag.totalpages;
+                        if (ViewBag.PageNumber == 1)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                        for (int i = 1; i <= TotalPages; i++)
+                        {
+                            if (i == ViewBag.PageNumber)
+                            {
+                                <li class="page-item active ">
+                                    @Html.ActionLink(i.ToString(), "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item ">
+                                    @Html.ActionLink(i.ToString(), "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                        }
+                        if (ViewBag.PageNumber == TotalPages)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "MemberDetails", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                                @*<a class="page-link" href="#"><img src="~/Content/images/left-arrow.png" alt="right-arrow"></a>*@
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
+
+

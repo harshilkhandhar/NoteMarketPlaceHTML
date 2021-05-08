@@ -1,0 +1,175 @@
+﻿
+@model IEnumerable<Notes_Market_Place.Models.SellerNotesReportedIssue>
+
+@{
+    ViewBag.Title = "SpamReport";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="dashboard">
+    <div class="container">
+        @using (Html.BeginForm("SpamReport", "AdminDashBoard", FormMethod.Get))
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="heading-01">
+                        <h2>Spam Reports</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-8 col-sm-8 col-8">
+                            <div class="form-group dash-search">
+                                <span class="fa fa-search form-control-feedback"></span>
+                                @Html.TextBox("Search", null, new { @class = "form-control", @placeholder = "Search", @style = "margin-top:30px;" })
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-4">
+                            <div>
+                                <input class="btn btn-admin btn-home-03" type="submit" value="search" name="Search" style="margin-top:30px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <div class="row table-responsive">
+            <table class="table">
+                <thead>
+                    <tr class="titles">
+                        <th scope="col">SR NO.</th>
+                        <th scope="col">REPORTED BY</th>
+                        <th scope="col">@Html.ActionLink("NOTE TITLE", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "NOTE TITLE", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">@Html.ActionLink("CATEGORY", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "CATEGORY", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">@Html.ActionLink("DATE EDITED", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "DATE EDITED", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">@Html.ActionLink("REMARK", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : (ViewBag.Sortorder == "ASC" ? "DESC" : "ASC"), SortBy = "REMARK", PageNumber = ViewBag.PageNumber == 0 ? 1 : ViewBag.PageNumber }, new { @style = "color:#000000;" })</th>
+                        <th scope="col">ACTION</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                @if (ViewBag.Message != null)
+                {
+                    <tr class="text-center"><td colspan="9">@ViewBag.Message</td></tr>
+                }
+            <tbody class="table-data text-center">
+                @{var srno = (ViewBag.PageNumber - 1) * 5; }
+                @foreach (var item in Model)
+                {
+                    srno = srno + 1;
+                    <tr>
+                        <td>@srno.</td>
+                        @{ 
+                            var db = new Notes_Market_Place.Models.NotesMarketPLaceEntities();
+                            var rating = db.Users.Where(x => x.ID == item.ReviewByID).FirstOrDefault()/*Select(x => x.FirstName + x.LastName)*/;
+                            var reportedby = rating.FirstName +" "+ rating.LastName;
+                         }
+                        <td class="text-left">@reportedby</td>
+                        <td class="text-left"><a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new { id = item.NoteID })">@item.SellerNote.Title</a></td>
+                        <td class="text-left">@item.SellerNote.NoteCategory.Name</td>
+                        <td  class="text-left">@item.CreatedDate.Value.ToString("dd-MM-yyyy,hh:mm")</td>
+                        <td  class="text-left">@item.Remarks</td>
+                        <td>
+                            <a href="#deletespam-@item.NoteID" target="save" role="button"
+                               data-toggle="modal">
+                                <img src="~/Content/images/delete.png" alt="delete-image">
+                            </a>
+
+
+                            <!-- DeleteSpam Model -->
+                            <div class="modal fade" id="deletespam-@item.NoteID" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true"><img src="~/Content/images/close.png" alt="closeimage"></span>
+                                                </button>
+                                            </div>
+                                            <div id="model-content">
+                                                <div class="note-description">
+                                                    <p>
+                                                        “Are you sure you want to Delete the reported issue?.”
+                                                    </p>
+                                                </div>
+                                                <div class="col-md-12 review text-right">
+                                                    @Html.ActionLink("Yes", "DeleteSpamReport", "AdminDashBoard", new { id = item.NoteID }, new { @class = "btn btn-notes-under-preview btn-home-03" })
+                                                    <a class="btn btn-notes-under-preview btn-inreview" data-dismiss="modal">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="dropleft">
+                            <a class="dropdown" href="#" id="navbarDropdoenMenuLink" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><img src="~/Content/images/dots.png" alt="view"></a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdoenMenuLink">
+                                <a href="@Url.Action("AdminDashBoardDownload", "AdminDashBoard", new { id = item.NoteID })" class="dropdown-item">Download Notes</a>
+                                <a href="@Url.Action("NotesDeatil", "AdminNoteDetail", new { id = item.NoteID })" class="dropdown-item">View More Details</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+<section class="dashboard-pagination">
+    <div class="pagelist">
+        <nav>
+            <ul class="pagination justify-content-center">
+                @{
+                    if (ViewBag.totalpages != null)
+                    {
+                        double TotalPages = ViewBag.totalpages;
+                        if (ViewBag.PageNumber == 1)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink("<", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber - 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                        for (int i = 1; i <= TotalPages; i++)
+                        {
+                            if (i == ViewBag.PageNumber)
+                            {
+                                <li class="page-item active ">
+                                    @Html.ActionLink(i.ToString(), "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="page-item ">
+                                    @Html.ActionLink(i.ToString(), "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = i }, new { @class = "page-link" })
+                                </li>
+                            }
+                        }
+                        if (ViewBag.PageNumber == TotalPages)
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber }, new { @class = "page-link" })
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="page-item">
+                                @Html.ActionLink(">", "SpamReport", new { Sortorder = ViewBag.Sortorder == null ? "DESC" : ViewBag.Sortorder, SortBy = ViewBag.SortBy == null ? "NOTE TITLE" : ViewBag.SortBy, PageNumber = ViewBag.PageNumber + 1 }, new { @class = "page-link" })
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+        </nav>
+    </div>
+</section>
+
