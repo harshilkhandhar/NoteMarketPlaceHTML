@@ -11,8 +11,8 @@ namespace Notes_Market_Place.Models
     {
         public static void SendEmail(MailMessage mail)
         {
-            var fromEmail = new MailAddress("k.harshil2000@gmail.com", "Notes MarketPlace");
-            var fromEmailPassword = "vickey@1804"; // Replace with actual password
+            var fromEmail = new MailAddress("*********", "Notes MarketPlace");
+            var fromEmailPassword = "**********"; // Replace with actual password
             var smtp = new SmtpClient
             {
                 Host = "smtp.gmail.com",
